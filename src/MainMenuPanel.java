@@ -82,7 +82,8 @@ public class MainMenuPanel extends JPanel implements ActionListener {
             cl.show(mainFrame.cardsPanel, mainFrame.gamePanel.getCardName());
 
         }else if(actionEvent.getSource() == settingsMainButton){
-            System.out.println("settings");
+            CardLayout cl = (CardLayout) (mainFrame.cardsPanel.getLayout());
+            cl.show(mainFrame.cardsPanel, mainFrame.settingsPanel.getCardName());
         }
 
     }
