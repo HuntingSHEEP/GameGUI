@@ -28,6 +28,9 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         startMainButton.addActionListener(this);
         settingsMainButton.addActionListener(this);
 
+        skillsTreeButton.setToolTipText("\n" +
+                "HERE IS THE DESCRIPTION!" +
+                "\n");
 
         panel.add(skillsTreeButton);
         panel.add(levelsMainButton);

@@ -26,6 +26,15 @@ class SkillsTreeButton extends JButton {
         setIcon(unselected);
     }
 
+    public JToolTip createToolTip(){
+        ToolTipManager.sharedInstance().setDismissDelay(60000);
+        JToolTip tip = super.createToolTip();
+        tip.setBorder(BorderFactory.createLineBorder(new Color(0, 200, 200), 1));
+        tip.setOpaque(false);
+        tip.setForeground(Color.WHITE);
+        return tip;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         if (getModel().isPressed()) {
