@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SkillsTreePanel extends JPanel implements ActionListener {
+public class LevelsPanel extends JPanel implements ActionListener {
     JButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
 
-    SkillsTreePanel(MainFrame mainFrame){
+    LevelsPanel(MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
@@ -31,6 +31,8 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         southPanel.setBackground(backgroundColor);
         southPanel.setPreferredSize(new Dimension(50, 50));
 
+        panel.setBackground(Color.BLUE);
+
         backToMainMenuButton = new JButton();
         backToMainMenuButton.setBounds(30, 10, 30, 30);
         backToMainMenuButton.addActionListener(this);
@@ -49,7 +51,7 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     }
 
     public String getCardName(){
-        return "1";
+        return "2";
     }
 
     @Override

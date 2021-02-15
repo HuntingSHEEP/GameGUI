@@ -9,6 +9,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     MainMenuPanel mainMenuPanel;
     SkillsTreePanel skillsTreePanel;
+    LevelsPanel levelsPanel;
 
 
     MainFrame(){
@@ -17,10 +18,12 @@ public class MainFrame extends JFrame implements ActionListener {
 
         mainMenuPanel = new MainMenuPanel(this);
         skillsTreePanel = new SkillsTreePanel(this);
+        levelsPanel = new LevelsPanel(this);
 
         cardsPanel.setLayout(new CardLayout());
-        cardsPanel.add(mainMenuPanel, "0");
-        cardsPanel.add(skillsTreePanel, "1");
+        cardsPanel.add(mainMenuPanel, mainMenuPanel.getCardName());
+        cardsPanel.add(skillsTreePanel, skillsTreePanel.getCardName());
+        cardsPanel.add(levelsPanel, levelsPanel.getCardName());
 
         this.add(cardsPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

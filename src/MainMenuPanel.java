@@ -63,16 +63,20 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         this.add(panel, BorderLayout.CENTER);
     }
 
+    public String getCardName(){
+        return "0";
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == skillsTreeButton){
-            System.out.println("skill");
             CardLayout cl = (CardLayout) (mainFrame.cardsPanel.getLayout());
-            cl.show(mainFrame.cardsPanel, "1");
-
+            cl.show(mainFrame.cardsPanel, mainFrame.skillsTreePanel.getCardName());
 
         }else if(actionEvent.getSource() == levelsMainButton){
-            System.out.println("levels");
+            CardLayout cl = (CardLayout) (mainFrame.cardsPanel.getLayout());
+            cl.show(mainFrame.cardsPanel, mainFrame.levelsPanel.getCardName());
+
         }else if(actionEvent.getSource() == startMainButton){
             System.out.println("starten!");
         }else if(actionEvent.getSource() == settingsMainButton){
