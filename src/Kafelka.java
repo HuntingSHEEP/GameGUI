@@ -8,35 +8,57 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Kafelka extends Rectangle2D.Float
 {
+    /*
+    * BRICK TYPES:
+    * 1) STONE BRICK - 2 live points
+    * 2) ICE BRICK - 3 live points, can melt down immediately when hit with fire ball
+    */
+
   Plansza p;
   BufferedImage[] textures;
   int margines;
   int flaga_ZYCIA;
   int bonus;
+  int brickType;
 
 
-    Kafelka(Plansza p, int x, int y, float width)
+    Kafelka(Plansza p, int x, int y, float width, int brickType)
     {
-        this.margines=2;
+        this.margines=4;
         this.width=width-this.margines;
         this.height=20-this.margines;
         this.x=x*(this.width+this.margines)+this.margines;
         this.y=y*(this.height+this.margines)+this.margines;
-        this.flaga_ZYCIA=2;
         bonus = ThreadLocalRandom.current().nextInt(0, 10 + 1);
         //bonus = 1;
         this.p = p;
+        this.brickType=brickType;
+        this.flaga_ZYCIA=2;
 
-        textures = new BufferedImage[2];
+        if(brickType == 0)
+            this.flaga_ZYCIA=2;
+        else if(brickType == 1)
+            this.flaga_ZYCIA=3;
+
+        textures = new BufferedImage[3];
         loadTextures();
     }
 
     private void loadTextures(){
-        String[] pliki = {"textures/brickStoneHIT.png", "textures/brickStoneFull.png"};
+        String[][] pliki = {
+                {"textures/brickStoneHIT.png", "textures/brickStoneFull.png"},
+                {"textures/brickIceHITTwice.png", "textures/brickIceHITOnce.png","textures/brickIceFULL.png"}};
+
+        int lvs=2;
+        if (brickType==0)
+            lvs = 2;
+        else if(brickType==1)
+            lvs = 3;
+
         try
         {
-            for (int i=0; i<2; i++){
-                File f=new File(pliki[i]);
+            for (int i=0; i<lvs; i++){
+                File f=new File(pliki[brickType][i]);
                 textures[i] = ImageIO.read(f);
             }
 

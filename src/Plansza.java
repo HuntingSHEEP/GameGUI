@@ -48,7 +48,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
        a[1].addDeltaX(10);
 
        for (int i=0; i<liczba_kafelek; i++){
-           k[i]=new Kafelka(this, i%columns, i/columns, 718f/columns);
+           k[i]=new Kafelka(this, i%columns, i/columns, 718f/columns, 1);
            fallingBonus[i] = new Bonus(this,i%columns, i/columns, 718f/columns);
        }
        loadTextures();
