@@ -20,18 +20,27 @@ public class GamePanel extends JPanel implements ActionListener {
         JPanel southPanel = new JPanel();
 
         northPanel.setBackground(backgroundColor);
+        northPanel.setOpaque(false);
         northPanel.setPreferredSize(new Dimension(50, 50));
 
         westPanel.setBackground(backgroundColor);
+        westPanel.setOpaque(false);
         westPanel.setPreferredSize(new Dimension(50, 50));
 
         eastPanel.setBackground(backgroundColor);
+        eastPanel.setOpaque(false);
         eastPanel.setPreferredSize(new Dimension(50, 50));
 
         southPanel.setBackground(backgroundColor);
+        southPanel.setOpaque(false);
         southPanel.setPreferredSize(new Dimension(50, 50));
 
-        panel.setBackground(Color.YELLOW);
+
+        Plansza plansza = new Plansza();
+        panel.setOpaque(false);
+        panel.add(plansza);
+        panel.setLayout(new GridLayout(1,1));
+        panel.setBorder(BorderFactory.createLineBorder(new Color(50, 55, 55), 1));
 
         backToMainMenuButton = new JButton();
         backToMainMenuButton.setBounds(30, 10, 30, 30);
@@ -39,7 +48,8 @@ public class GamePanel extends JPanel implements ActionListener {
         southPanel.add(backToMainMenuButton);
         southPanel.setLayout(null);
 
-        setBackground(backgroundColor);
+        //setBackground(backgroundColor);
+        //setBackground(new Color(70, 70, 70));
         setLayout(new BorderLayout());
 
         this.add(northPanel, BorderLayout.NORTH);
@@ -48,6 +58,15 @@ public class GamePanel extends JPanel implements ActionListener {
         this.add(southPanel, BorderLayout.SOUTH);
         this.add(panel, BorderLayout.CENTER);
 
+    }
+
+    public void paintComponent(Graphics g){
+        ImageIcon img = new ImageIcon("textures/tlo.png");
+
+        if (img != null)
+        {
+            g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+        }
     }
 
     public String getCardName(){

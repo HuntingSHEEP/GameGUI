@@ -34,7 +34,8 @@ public class MainFrame extends JFrame implements ActionListener {
         this.add(cardsPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(820, 700);
-        this.setResizable(true);
+        this.setMaximumSize(new Dimension(820, 700));
+        this.setResizable(false);
         this.setVisible(true);
     }
 
