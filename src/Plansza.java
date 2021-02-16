@@ -40,10 +40,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
       super();
       addMouseMotionListener(this);
       addMouseListener(this);
-
-
       setFocusable(true);
-
       addKeyListener(this);
 
       this.gamePanel = gamePanel;
@@ -250,6 +247,14 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         System.out.println("You typed: " + keyEvent.getKeyCode());
+        if(keyEvent.getKeyCode() == 81){
+            if(skillCoins>0){
+                skillCoins--;
+                gamePanel.eastPanel.repaint();
+            }
+        }else if(keyEvent.getKeyCode() == 27){
+            System.out.println("SHOW MINI MENU!");
+        }
 
     }
 
