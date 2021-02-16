@@ -11,9 +11,10 @@ class Kulka extends Ellipse2D.Float
    boolean isFlying=false;
    Color normalBall = new Color(0, 255, 255);
    Color fireBall = new Color(250, 81, 2);
-   Color iceBall = new Color(0xd9f1f4);
+   Color iceBall = new Color(0xB8C7C9);
 
    int ballType = 0;
+   int force = 1;
 
 
    Kulka(Plansza p,int x,int y,double dx,double dy, boolean isAlive)
@@ -108,13 +109,13 @@ class Kulka extends Ellipse2D.Float
                if(p.a[0].ballType == 0){
                    //System.out.println("BOUNCED FROM BRICK!");
                    dy=-dy;
-                   p.k[u].flaga_ZYCIA--;
+                   p.k[u].flaga_ZYCIA-=force;
                }else if(p.a[0].ballType == 1){
                    System.out.println("BRICK IS BURNED DOWN!");
                    p.k[u].flaga_ZYCIA=0;
                }
 
-               if (p.k[u].flaga_ZYCIA==0){
+               if (p.k[u].flaga_ZYCIA<=0){
                    p.livingBricks--;
                    p.score++;
                    p.k[u].createBonus(u);

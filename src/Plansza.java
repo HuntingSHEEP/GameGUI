@@ -26,7 +26,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
     int liczba_kafelek = columns * rows;
     int livingBricks = liczba_kafelek;
     Kafelka[] k = new Kafelka[liczba_kafelek];
-    Bonus [] fallingBonus = new Bonus[liczba_kafelek];
+    Bonus[] fallingBonus = new Bonus[liczba_kafelek];
 
     int score = 0;
     boolean game_over = false;
@@ -101,7 +101,10 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
                g2d.fill(new Rectangle2D.Float((b.x + (int) (b.width*(1- b.roundPercentage))) ,b.y, (int) (b.width * b.roundPercentage), b.height));
 
                if(floor.isAlive){
-                   g2d.setPaint(floor.getTexture());
+                   //g2d.setPaint(floor.getTexture());
+                   //g2d.setStroke(new BasicStroke(2f));
+                   //g2d.draw(floor);
+                   g2d.setPaint(new TexturePaint(floor.getTexture(), (Rectangle2D) floor));
                    g2d.fill(floor);
                }
 
