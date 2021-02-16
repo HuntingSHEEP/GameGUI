@@ -1,12 +1,32 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class BonusEngine extends Thread {
     boolean running=true;
     int fireBallCycles = 0;
     int stickyBarCycles = 0;
 
     Plansza p;
+    GamePanel gamePanel;
 
-    BonusEngine(Plansza p){
+
+    JLabel skillBadge;
+    boolean skillBadgeFlag = false;
+
+    BonusEngine(Plansza p, GamePanel gamePanel){
         this.p = p;
+        this.gamePanel = gamePanel;
+
+        skillBadge = new JLabel(""+p.skillCoins);
+
+        skillBadge.setHorizontalTextPosition(JLabel.CENTER);
+        skillBadge.setVerticalTextPosition(JLabel.CENTER);
+        skillBadge.setBounds(5, 200, 40, 60);
+        skillBadge.setPreferredSize(new Dimension(40, 60));
+        skillBadge.setForeground(Color.WHITE);
+        skillBadge.setOpaque(false);
+        skillBadge.setIcon(new ImageIcon("textures/skillBagde.png"));
+
         start();
     }
 
@@ -14,6 +34,25 @@ public class BonusEngine extends Thread {
         try{
             System.out.println("START ENGINE");
             while(running){
+
+                if (p.skillCoins > 0){
+                    if (!skillBadgeFlag){
+                        skillBadge.setText(""+p.skillCoins);
+                        gamePanel.eastPanel.add(skillBadge);
+                        gamePanel.eastPanel.repaint();
+                        skillBadgeFlag = true;
+                    }
+                    skillBadge.setText(""+p.skillCoins);
+
+                }else if(p.skillCoins == 0){
+                    if(skillBadgeFlag){
+                        gamePanel.eastPanel.remove(skillBadge);
+                        gamePanel.eastPanel.repaint();
+                        skillBadgeFlag=false;
+                    }
+                }
+
+
 
 
                 if (p.floor.isAlive){

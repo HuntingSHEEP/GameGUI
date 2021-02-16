@@ -118,6 +118,12 @@ class Kulka extends Ellipse2D.Float
                if (p.k[u].flaga_ZYCIA<=0){
                    p.livingBricks--;
                    p.score++;
+                   if ((int) (p.score / 2) >0){
+                       p.skillCoins += p.score/2;
+                       p.score = p.score%2;
+                       p.gamePanel.eastPanel.repaint();
+
+                   }
                    p.k[u].createBonus(u);
                }
                u=p.liczba_kafelek+1;

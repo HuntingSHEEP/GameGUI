@@ -7,6 +7,10 @@ public class GamePanel extends JPanel implements ActionListener {
     JButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
+    JPanel northPanel;
+    JPanel westPanel;
+    JPanel eastPanel;
+    JPanel southPanel;
 
     GamePanel(MainFrame mainFrame){
         super();
@@ -14,10 +18,10 @@ public class GamePanel extends JPanel implements ActionListener {
         backgroundColor = new Color(0x222222);
 
         JPanel panel = new JPanel();
-        JPanel northPanel = new JPanel();
-        JPanel westPanel = new JPanel();
-        JPanel eastPanel = new JPanel();
-        JPanel southPanel = new JPanel();
+        northPanel = new JPanel();
+        westPanel = new JPanel();
+        eastPanel = new JPanel();
+        southPanel = new JPanel();
 
         northPanel.setBackground(backgroundColor);
         northPanel.setOpaque(false);
@@ -30,13 +34,18 @@ public class GamePanel extends JPanel implements ActionListener {
         eastPanel.setBackground(backgroundColor);
         eastPanel.setOpaque(false);
         eastPanel.setPreferredSize(new Dimension(50, 50));
+        eastPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+        JLabel justNothing = new JLabel();
+        justNothing.setPreferredSize(new Dimension(40, 200));
+        eastPanel.add(justNothing);
 
         southPanel.setBackground(backgroundColor);
         southPanel.setOpaque(false);
         southPanel.setPreferredSize(new Dimension(50, 50));
 
 
-        Plansza plansza = new Plansza();
+        Plansza plansza = new Plansza(this);
         panel.setOpaque(false);
         panel.add(plansza);
         panel.setLayout(new GridLayout(1,1));

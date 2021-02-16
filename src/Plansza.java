@@ -15,7 +15,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
     Kulka[] a = new Kulka[maxAmountOfBalls];
     Color barColor;
     Floor floor;
-
     int lastMousePositionX = 325;
 
     SilnikKulki s;
@@ -29,18 +28,23 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
     Bonus[] fallingBonus = new Bonus[liczba_kafelek];
 
     int score = 0;
+    int skillCoins = 2;
+
     boolean game_over = false;
     boolean engineStartFlag = false;
 
-   Plansza()
+    GamePanel gamePanel;
+
+   Plansza(GamePanel gamePanel)
    {
       super();
       addMouseMotionListener(this);
       addMouseListener(this);
+      this.gamePanel = gamePanel;
 
        b=new Belka(325-40, 525);
        floor=new Floor(this, 0, 455, 650);
-       bonusEngine = new BonusEngine(this);
+       bonusEngine = new BonusEngine(this, this.gamePanel);
 
        for(int w=0; w<maxAmountOfBalls; w++)
            a[w]=new Kulka(this,325-5,515,0,-2, false);
@@ -75,6 +79,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
        Graphics2D g2d=(Graphics2D)g;
 
        if (livingBricks==0){
+           gamePanel.eastPanel.removeAll();
+           gamePanel.eastPanel.repaint();
            s.running = false;
            bonusEngine.running=false;
            g2d.setPaint(new Color(63, 75, 68));
@@ -148,6 +154,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
              g2d.setPaint(new Color(76, 57, 74));
              g.setFont(new Font("Dialog", Font.BOLD, 20));
              g2d.drawString("GAME OVER", getSize().width/2 - 65, getSize().height/2+30);
+             gamePanel.eastPanel.removeAll();
+             gamePanel.eastPanel.repaint();
           }
 
        }
