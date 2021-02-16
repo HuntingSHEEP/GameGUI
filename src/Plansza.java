@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import java.io.*;
 
 
-class Plansza extends JPanel implements MouseMotionListener, MouseListener
+class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyListener
 {
     int maxAmountOfBalls = 10;
     int ballCount = 1;
@@ -40,6 +40,12 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
       super();
       addMouseMotionListener(this);
       addMouseListener(this);
+
+
+      setFocusable(true);
+
+      addKeyListener(this);
+
       this.gamePanel = gamePanel;
 
        b=new Belka(325-40, 525);
@@ -57,6 +63,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
        }
        loadTextures();
        setOpaque(false);
+       System.out.println(isFocusable());
    }
 
 
@@ -67,6 +74,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
 
    public void paintComponent(Graphics g)
    {
+       requestFocus();
 
        super.paintComponent(g);
        ImageIcon img = new ImageIcon("textures/woodenBackground.jpg");
@@ -232,4 +240,17 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener
     public void mousePressed(MouseEvent e){
 
     }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {}
+
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {}
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+        System.out.println("You typed: " + keyEvent.getKeyCode());
+
+    }
+
 }

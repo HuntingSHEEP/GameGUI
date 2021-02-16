@@ -18,12 +18,12 @@ public class BonusEngine extends Thread {
         this.gamePanel = gamePanel;
 
         skillBadge = new JLabel(""+p.skillCoins);
-
+        skillBadge.setFont(new Font("MV Boli", Font.PLAIN, 17));
         skillBadge.setHorizontalTextPosition(JLabel.CENTER);
         skillBadge.setVerticalTextPosition(JLabel.CENTER);
         skillBadge.setBounds(5, 200, 40, 60);
         skillBadge.setPreferredSize(new Dimension(40, 60));
-        skillBadge.setForeground(Color.WHITE);
+        skillBadge.setForeground(new Color(0x8907fa));
         skillBadge.setOpaque(false);
         skillBadge.setIcon(new ImageIcon("textures/skillBagde.png"));
 
@@ -51,8 +51,6 @@ public class BonusEngine extends Thread {
                         skillBadgeFlag=false;
                     }
                 }
-
-
 
 
                 if (p.floor.isAlive){

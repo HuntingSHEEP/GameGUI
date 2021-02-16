@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class MainFrame extends JFrame implements ActionListener {
 
@@ -37,6 +39,7 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setMaximumSize(new Dimension(820, 700));
         this.setResizable(false);
         this.setVisible(true);
+
     }
 
     @Override
@@ -45,4 +48,5 @@ public class MainFrame extends JFrame implements ActionListener {
             System.out.println("skillsTree");
         }
     }
+
 }
