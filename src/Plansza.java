@@ -32,6 +32,11 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     boolean gameOver = false;
     boolean gamePaused = false;
     boolean engineStartFlag = false;
+    boolean freezeAndFlyToPoint=false;
+
+    Point mouseTip = new Point(0,0);
+
+
 
     GamePanel gamePanel;
 
@@ -73,7 +78,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
    public void paintComponent(Graphics g)
    {
-       requestFocus();
 
        super.paintComponent(g);
        g2d=(Graphics2D)g;
@@ -96,6 +100,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                    g2d.setPaint(new Color(63, 75, 68));
                    g.setFont(new Font("Dialog", Font.BOLD, 15));
                    g2d.drawString("SCORE: "+score, 20, 360);
+               }else{
+                   requestFocus();
                }
 
 
@@ -154,6 +160,18 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                    g2d.drawString("PAUSE", getSize().width/2 - 35, getSize().height/2+30);
                }
 
+               if(freezeAndFlyToPoint){
+                   int R = 900;
+                   int r = 10;
+                   int move = 5;
+                   g2d.setStroke(new BasicStroke(1f));
+                   g2d.setPaint(new Color(1, 141, 138));
+                   g.drawLine(mouseTip.x - R-move, mouseTip.y-move, mouseTip.x - r-move, mouseTip.y-move);
+                   g.drawLine(mouseTip.x + r-move, mouseTip.y-move, mouseTip.x + R-move, mouseTip.y-move);
+                   g.drawLine(mouseTip.x-move, mouseTip.y - R-move, mouseTip.x-move, mouseTip.y - r-move);
+                   g.drawLine(mouseTip.x-move, mouseTip.y + r-move, mouseTip.x-move, mouseTip.y + R-move);
+               }
+
 
           }else{
              ballsEngine.running = false;
@@ -171,6 +189,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
    public void mouseMoved(MouseEvent e)
    {
+       mouseTip.setLocation(e.getX(), e.getY());
        if(!gamePaused){
            int mousePositionX=e.getX();
 
@@ -203,6 +222,12 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
     public void mouseClicked(MouseEvent e){
         System.out.println("CLICKED!");
+
+        if(freezeAndFlyToPoint){
+            mouseTip.setLocation(e.getX()-5, e.getY()-5);
+            freezeAndFlyToPoint(false);
+        }
+
         if(!engineStartFlag){
             engineStartFlag =true;
             ballsEngine =new SilnikKulki(this, a);
@@ -254,16 +279,18 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
         if(!gamePaused){
             if(keyEvent.getKeyCode() == 81){
+                //FREEZE AND FLY TO POINT
                 if(skillCoins>0){
                     skillCoins--;
                     gamePanel.eastPanel.repaint();
+                    freezeAndFlyToPoint(true);
                 }
             }
         }
 
 
         if(keyEvent.getKeyCode() == 27){
-            if(!gameOver){
+            if(!gameOver && !freezeAndFlyToPoint){
                 if(engineStartFlag){
                     if(!bonusEngine.justWait){
                         gamePaused = true;
@@ -275,11 +302,28 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                         ballsEngine.justWait=false;
                     }
                 }
-
-
-
             }
         }
+    }
+
+    public void freezeAndFlyToPoint(boolean start){
+       if(start){
+           freezeAndFlyToPoint=true;
+           ballsEngine.justWait=true;
+           bonusEngine.doRepaint=true;
+       }else{
+           freezeAndFlyToPoint=false;
+           ballsEngine.justWait=false;
+           bonusEngine.doRepaint=false;
+
+           for(int w=0; w<maxAmountOfBalls; w++){
+               if (a[w].isAlive){
+                   if(a[w].isFlying){
+                       a[w].flyToPoint(mouseTip);
+                   }
+               }
+           }
+       }
     }
 
 }

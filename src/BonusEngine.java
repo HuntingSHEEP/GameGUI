@@ -9,6 +9,7 @@ public class BonusEngine extends Thread {
     Plansza p;
     GamePanel gamePanel;
     boolean justWait=false;
+    boolean doRepaint=false;
 
 
     JLabel skillBadge;
@@ -111,6 +112,9 @@ public class BonusEngine extends Thread {
                 }else{
                     p.b.sticky=false;
                 }
+
+                if(doRepaint)
+                    p.repaint();
 
                 sleep(10);
             }

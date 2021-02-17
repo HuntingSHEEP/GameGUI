@@ -50,6 +50,15 @@ class Kulka extends Ellipse2D.Float
        this.dx = dx;
        this.dy = dy;
    }
+   void flyToPoint(Point point){
+       float eDX = point.x - x;
+       float eDY = point.y - y;
+       double nonScaledSpeed = Math.sqrt(eDX*eDX + eDY*eDY);
+       double speedScale = getSpeed()/nonScaledSpeed;
+       eDX *= speedScale;
+       eDY *= speedScale;
+       setDXDY(eDX, eDY);
+   }
 
    public double getSpeed(){
        return Math.sqrt(dx*dx + dy*dy);
