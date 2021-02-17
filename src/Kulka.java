@@ -75,7 +75,7 @@ class Kulka extends Ellipse2D.Float
            isAlive=false;
            p.ballCount--;
            if(p.ballCount==0)
-               p.game_over = true;
+               p.gameOver = true;
        }
 
        bounceFromBar();

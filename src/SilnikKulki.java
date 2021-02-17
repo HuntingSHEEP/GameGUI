@@ -6,6 +6,7 @@ class SilnikKulki extends Thread
    boolean running = true;
    double delay = 1;
    int delayCount=0;
+   boolean justWait=false;
 
 
    SilnikKulki(Plansza p,Kulka[] a)
@@ -21,6 +22,14 @@ class SilnikKulki extends Thread
       {
          while(running)
          {
+             if(justWait){
+                 while(justWait){
+                     sleep(10);
+                 }
+             }
+
+
+
              for(int w=0; w<p.maxAmountOfBalls; w++){
                  if (a[w].isAlive){
                      if(a[w].isFlying){

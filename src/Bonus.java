@@ -1,5 +1,4 @@
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,6 +12,7 @@ public class Bonus extends Rectangle2D.Float
     boolean isAlive = false;
     int heightMargin, widthMargin;
     int type = -1;
+    int liveCycles=0;
 
     Bonus(Plansza p, int x, int y, float width){
         this.heightMargin = 1;
@@ -51,8 +51,8 @@ public class Bonus extends Rectangle2D.Float
     public void exec(){
         if (type == 0){
             //BALL SPEED PENALTY
-            p.s.delay = 0.4;
-            p.s.delayCount = 2000;
+            p.ballsEngine.delay = 0.4;
+            p.ballsEngine.delayCount = 2000;
 
         }else if(type == 1){
             //EXTEND BAR
@@ -82,20 +82,20 @@ public class Bonus extends Rectangle2D.Float
 
         }else if(type == 5){
             //FLOOR
-            p.floor.lifeCycles+=10*20;
+            p.floor.lifeCycles+=100*20;
             p.floor.isAlive=true;
 
 
         }else if(type == 6){
             //SUPER FLOOR
-            p.floor.lifeCycles+=10*20;
+            p.floor.lifeCycles+=100*20;
             p.floor.isAlive=true;
             p.floor.superFloor=true;
 
         }else if(type == 7){
             //STICKY BAR
             p.b.sticky=true;
-            p.bonusEngine.stickyBarCycles += 10 * 10;
+            p.bonusEngine.stickyBarCycles += 100 * 10;
             System.out.println("++ CYCLES :"+p.bonusEngine.stickyBarCycles);
 
         }else if(type == 8){
@@ -114,7 +114,7 @@ public class Bonus extends Rectangle2D.Float
             }
         }else if(type == 9){
             //FIRE BALL VEL DUM-DUM
-            p.bonusEngine.fireBallCycles += 15*10;
+            p.bonusEngine.fireBallCycles += 15*100;
             for (int i=0; i<p.maxAmountOfBalls; i++){
                 p.a[i].ballType = 1;
             }

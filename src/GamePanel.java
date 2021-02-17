@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GamePanel extends JPanel implements ActionListener {
-    JButton backToMainMenuButton;
+    BackToMainMenuButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
     JPanel northPanel;
@@ -53,8 +53,7 @@ public class GamePanel extends JPanel implements ActionListener {
         panel.setLayout(new GridLayout(1,1));
         panel.setBorder(BorderFactory.createLineBorder(new Color(50, 55, 55), 1));
 
-        backToMainMenuButton = new JButton();
-        backToMainMenuButton.setBounds(30, 10, 30, 30);
+        backToMainMenuButton = new BackToMainMenuButton();
         backToMainMenuButton.addActionListener(this);
         southPanel.add(backToMainMenuButton);
         southPanel.setLayout(null);

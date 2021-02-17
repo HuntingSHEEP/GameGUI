@@ -11,7 +11,7 @@ class Kafelka extends Rectangle2D.Float
     /*
     * BRICK TYPES:
     * 1) STONE BRICK - 2 live points
-    * 2) ICE BRICK - 3 live points, can melt down immediately when hit with fire ball
+    * 2) ICE BRICK - 3 live points, can melt down immediately when hit by fire ball
     */
 
   Plansza p;
@@ -75,6 +75,9 @@ class Kafelka extends Rectangle2D.Float
             p.fallingBonus[index].type = bonus%10;
             p.fallingBonus[index].type = 5;
             p.fallingBonus[index].isAlive = true;
+            p.fallingBonus[index].liveCycles = p.getSize().height+5;
+
+            /*
 
             Thread watek = new Thread(){
                 public void run(){
@@ -120,7 +123,7 @@ class Kafelka extends Rectangle2D.Float
                 }
 
             };
-            watek.start();
+            watek.start(); */
 
         }
     }

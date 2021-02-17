@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SkillsTreePanel extends JPanel implements ActionListener {
-    JButton backToMainMenuButton;
+    BackToMainMenuButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
 
@@ -31,8 +31,7 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         southPanel.setBackground(backgroundColor);
         southPanel.setPreferredSize(new Dimension(50, 50));
 
-        backToMainMenuButton = new JButton();
-        backToMainMenuButton.setBounds(30, 10, 30, 30);
+        backToMainMenuButton = new BackToMainMenuButton();
         backToMainMenuButton.addActionListener(this);
         southPanel.add(backToMainMenuButton);
         southPanel.setLayout(null);

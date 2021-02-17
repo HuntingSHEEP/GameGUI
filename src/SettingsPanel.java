@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SettingsPanel extends JPanel implements ActionListener {
-    JButton backToMainMenuButton;
+    BackToMainMenuButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
 
@@ -33,8 +33,7 @@ public class SettingsPanel extends JPanel implements ActionListener {
 
         panel.setBackground(Color.CYAN);
 
-        backToMainMenuButton = new JButton();
-        backToMainMenuButton.setBounds(30, 10, 30, 30);
+        backToMainMenuButton = new BackToMainMenuButton();
         backToMainMenuButton.addActionListener(this);
         southPanel.add(backToMainMenuButton);
         southPanel.setLayout(null);

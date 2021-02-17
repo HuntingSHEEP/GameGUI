@@ -8,6 +8,7 @@ public class BonusEngine extends Thread {
 
     Plansza p;
     GamePanel gamePanel;
+    boolean justWait=false;
 
 
     JLabel skillBadge;
@@ -34,6 +35,38 @@ public class BonusEngine extends Thread {
         try{
             System.out.println("START ENGINE");
             while(running){
+                if(justWait){
+                    while(justWait){
+                        sleep(10);
+                    }
+                }
+
+
+
+                for(int index=0; index< p.liczba_kafelek; index++){
+
+
+                    if(p.fallingBonus[index].isAlive){
+                        p.fallingBonus[index].y++;
+
+                        if(executeBarHit(index)){
+                            p.fallingBonus[index].isAlive=false;
+                            p.fallingBonus[index].liveCycles=0;
+                        }
+                        if(executeSuperFloorHit(index)){
+                            p.fallingBonus[index].isAlive=false;
+                            p.fallingBonus[index].liveCycles=0;
+                        }
+
+                        if(p.fallingBonus[index].liveCycles == 0){
+                            p.fallingBonus[index].isAlive=false;
+                        }
+                        else if(p.fallingBonus[index].liveCycles>0){
+                            p.fallingBonus[index].liveCycles--;
+                        }
+                    }
+                }
+
 
                 if (p.skillCoins > 0){
                     if (!skillBadgeFlag){
@@ -55,13 +88,12 @@ public class BonusEngine extends Thread {
 
                 if (p.floor.isAlive){
                     if(p.floor.lifeCycles == 0){
-                        System.out.println("Dead Floor cycles: "+ p.floor.lifeCycles);
+                        //System.out.println("Dead Floor cycles: "+ p.floor.lifeCycles);
                         p.floor.isAlive=false;
                         p.floor.superFloor=false;
                     }else if(p.floor.lifeCycles > 0){
-
                         p.floor.lifeCycles--;
-                        System.out.println("Floor cycles: "+ p.floor.lifeCycles);
+                        //System.out.println("Floor cycles: "+ p.floor.lifeCycles);
                     }
                 }
 
@@ -80,8 +112,30 @@ public class BonusEngine extends Thread {
                     p.b.sticky=false;
                 }
 
-                sleep(100);
+                sleep(10);
             }
         }catch (InterruptedException e) {System.out.println("Floor Engine Issue: " +e);}
+    }
+
+
+    public boolean executeBarHit(int index){
+        if(p.b.intersects(p.fallingBonus[index])){
+            p.fallingBonus[index].exec();
+            p.fallingBonus[index].isAlive = false;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean executeSuperFloorHit(int index){
+        if(p.floor.superFloor && p.floor.isAlive){
+            if(p.floor.intersects(p.fallingBonus[index])){
+                p.fallingBonus[index].exec();
+                p.fallingBonus[index].isAlive = false;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

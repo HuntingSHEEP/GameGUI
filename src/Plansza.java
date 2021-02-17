@@ -2,13 +2,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.*;
 
 
 class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyListener
 {
+    Graphics2D g2d;
+
     int maxAmountOfBalls = 10;
     int ballCount = 1;
     Belka b;
@@ -17,7 +16,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     Floor floor;
     int lastMousePositionX = 325;
 
-    SilnikKulki s;
+    SilnikKulki ballsEngine;
     BonusEngine bonusEngine;
 
     int rows = 3;
@@ -30,7 +29,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     int score = 0;
     int skillCoins = 2;
 
-    boolean game_over = false;
+    boolean gameOver = false;
+    boolean gamePaused = false;
     boolean engineStartFlag = false;
 
     GamePanel gamePanel;
@@ -47,20 +47,22 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
        b=new Belka(325-40, 525);
        floor=new Floor(this, 0, 455, 650);
-       bonusEngine = new BonusEngine(this, this.gamePanel);
+
 
        for(int w=0; w<maxAmountOfBalls; w++)
            a[w]=new Kulka(this,325-5,515,0,-2, false);
        a[0].isAlive=true;
-       a[1].addDeltaX(10);
+
 
        for (int i=0; i<liczba_kafelek; i++){
            k[i]=new Kafelka(this, i%columns, i/columns, 718f/columns, 1);
            fallingBonus[i] = new Bonus(this,i%columns, i/columns, 718f/columns);
        }
+
+       bonusEngine = new BonusEngine(this, this.gamePanel);
        loadTextures();
        setOpaque(false);
-       System.out.println(isFocusable());
+
    }
 
 
@@ -74,19 +76,12 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
        requestFocus();
 
        super.paintComponent(g);
-       ImageIcon img = new ImageIcon("textures/woodenBackground.jpg");
-
-       if (img != null)
-       {
-           //g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-       }
-
-       Graphics2D g2d=(Graphics2D)g;
+       g2d=(Graphics2D)g;
 
        if (livingBricks==0){
            gamePanel.eastPanel.removeAll();
            gamePanel.eastPanel.repaint();
-           s.running = false;
+           ballsEngine.running = false;
            bonusEngine.running=false;
            g2d.setPaint(new Color(63, 75, 68));
            g.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -95,7 +90,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
        }else{
 
-           if (!game_over){
+           if (!gameOver){
+
                if (engineStartFlag){
                    g2d.setPaint(new Color(63, 75, 68));
                    g.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -152,9 +148,15 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                    //g2d.drawString("TO SHOOT THE BALL!", 300, 320);
                }
 
+               if(gamePaused){
+                   g2d.setPaint(new Color(76, 57, 74));
+                   g.setFont(new Font("Dialog", Font.BOLD, 25));
+                   g2d.drawString("PAUSE", getSize().width/2 - 35, getSize().height/2+30);
+               }
+
 
           }else{
-             s.running = false;
+             ballsEngine.running = false;
              bonusEngine.running=false;
              g2d.setPaint(new Color(76, 57, 74));
              g.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -169,31 +171,33 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
    public void mouseMoved(MouseEvent e)
    {
-       int mousePositionX=e.getX();
+       if(!gamePaused){
+           int mousePositionX=e.getX();
 
-       for(int i=0; i<maxAmountOfBalls; i++){
-           if(a[i].isAlive){
-               if(!a[i].isFlying){
-                   if (0 <= (a[i].getMinX()-(lastMousePositionX-mousePositionX)) &&
-                          getWidth() >= (a[i].getMaxX()-(lastMousePositionX-mousePositionX))){
+           for(int i=0; i<maxAmountOfBalls; i++){
+               if(a[i].isAlive){
+                   if(!a[i].isFlying){
+                       if (0 <= (a[i].getMinX()-(lastMousePositionX-mousePositionX)) &&
+                              getWidth() >= (a[i].getMaxX()-(lastMousePositionX-mousePositionX))){
 
-                       a[i].addDeltaX(-(lastMousePositionX-mousePositionX));
-                       a[i].setY(getSize().height - 30 -13-5);
+                           a[i].addDeltaX(-(lastMousePositionX-mousePositionX));
+                           a[i].setY(getSize().height - 30 -13-5);
+                       }
+
                    }
-
                }
            }
+
+           b.setY(getSize().height - 20-13-5);
+           b.setX(e.getX()-(int) b.width/2);
+
+           floor.setBounds(0, getSize().height - 10, getSize().width, getSize().height);
+
+           if (!engineStartFlag)
+               repaint();
+
+           lastMousePositionX=mousePositionX;
        }
-
-       b.setY(getSize().height - 20-13-5);
-       b.setX(e.getX()-(int) b.width/2);
-
-       floor.setBounds(0, getSize().height - 10, getSize().width, getSize().height);
-
-       if (!engineStartFlag)
-           repaint();
-
-       lastMousePositionX=mousePositionX;
    }
 
 
@@ -201,7 +205,7 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
         System.out.println("CLICKED!");
         if(!engineStartFlag){
             engineStartFlag =true;
-            s=new SilnikKulki(this, a);
+            ballsEngine =new SilnikKulki(this, a);
         }
 
         for(int w=0; w<maxAmountOfBalls; w++){
@@ -247,15 +251,35 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         System.out.println("You typed: " + keyEvent.getKeyCode());
-        if(keyEvent.getKeyCode() == 81){
-            if(skillCoins>0){
-                skillCoins--;
-                gamePanel.eastPanel.repaint();
+
+        if(!gamePaused){
+            if(keyEvent.getKeyCode() == 81){
+                if(skillCoins>0){
+                    skillCoins--;
+                    gamePanel.eastPanel.repaint();
+                }
             }
-        }else if(keyEvent.getKeyCode() == 27){
-            System.out.println("SHOW MINI MENU!");
         }
 
+
+        if(keyEvent.getKeyCode() == 27){
+            if(!gameOver){
+                if(engineStartFlag){
+                    if(!bonusEngine.justWait){
+                        gamePaused = true;
+                        bonusEngine.justWait=true;
+                        ballsEngine.justWait=true;
+                    }else{
+                        gamePaused = false;
+                        bonusEngine.justWait=false;
+                        ballsEngine.justWait=false;
+                    }
+                }
+
+
+
+            }
+        }
     }
 
 }
