@@ -16,10 +16,11 @@ public class GameStatistics {
         return maxUnlockedLevel;
     }
 
-    public void gameWon(){
+    public void gameWon(int lvl){
+        if(lvl==maxUnlockedLevel)
+            maxUnlockedLevel++;
         gamesPlayed++;
         gamesWon++;
-        maxUnlockedLevel++;
         System.out.println("MAX UNLOCKED LEVEL "+maxUnlockedLevel);
     }
 
