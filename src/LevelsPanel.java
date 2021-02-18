@@ -52,14 +52,22 @@ public class LevelsPanel extends JPanel implements ActionListener {
 
     }
 
-    private void loadLevelButtons() {
+    public void loadLevelButtons() {
         int maxUnlockedLevel = mainFrame.getGameStatistics().getMaxUnlockedLevel();
         Level level = new Level();
         panel.removeAll();
         for(int i=0; i<level.getNumberOfLevels(); i++){
-            panel.add(level.getButton(i));
-
+            LevelButton button = level.getButton(i);
+            button.addActionListener(this);
+            button.setForeground(new Color(255, 0, 138, 255));
+            panel.add(button);
+            if( i>maxUnlockedLevel){
+                button.setEnabled(false);
+                button.setForeground(new Color(80, 75, 80, 72));
+            }
         }
+        revalidate();
+        repaint();
     }
 
     public String getCardName(){
@@ -71,6 +79,13 @@ public class LevelsPanel extends JPanel implements ActionListener {
         if(actionEvent.getSource() == backToMainMenuButton){
             CardLayout cl = (CardLayout) mainFrame.cardsPanel.getLayout();
             cl.show(mainFrame.cardsPanel, mainFrame.mainMenuPanel.getCardName());
+        }else{
+            //TODO: POTENTIAL BUG PLACE IF MORE BUTTONS ADDED
+            int buttonID = ((LevelButton) (actionEvent.getSource())).getLevelID();
+            mainFrame.gamePanel.createGame(buttonID);
+            CardLayout cl = (CardLayout) mainFrame.cardsPanel.getLayout();
+            cl.show(mainFrame.cardsPanel, mainFrame.gamePanel.getCardName());
+
         }
     }
 }

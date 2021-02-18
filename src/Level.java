@@ -36,7 +36,7 @@ public class Level {
     private void createLevel(){
         if(level == 0){
             rows = 1;
-            columns = 9;
+            columns = 1;
             bricksNumber = columns * rows;
             brick = new Kafelka[bricksNumber];
             fallingBonus = new Bonus[bricksNumber];

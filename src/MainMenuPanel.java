@@ -79,6 +79,7 @@ public class MainMenuPanel extends JPanel implements ActionListener {
         }else if(actionEvent.getSource() == levelsMainButton){
             CardLayout cl = (CardLayout) (mainFrame.cardsPanel.getLayout());
             cl.show(mainFrame.cardsPanel, mainFrame.levelsPanel.getCardName());
+            mainFrame.levelsPanel.loadLevelButtons();
 
         }else if(actionEvent.getSource() == startMainButton){
             CardLayout cl = (CardLayout) (mainFrame.cardsPanel.getLayout());
