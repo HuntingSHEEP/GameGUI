@@ -28,8 +28,6 @@ class SilnikKulki extends Thread
                  }
              }
 
-
-
              for(int w=0; w<p.maxAmountOfBalls; w++){
                  if (a[w].isAlive){
                      if(a[w].isFlying){

@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 
-class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyListener
+class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyListener, ActionListener
 {
     Graphics2D g2d;
 
@@ -19,55 +19,79 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     SilnikKulki ballsEngine;
     BonusEngine bonusEngine;
 
-    int rows = 3;
+
+    /*
+    int rows = 2;
     int columns = 12;
-    int liczba_kafelek = columns * rows;
+    int liczba_kafelek = rows * columns;
     int livingBricks = liczba_kafelek;
     Kafelka[] k = new Kafelka[liczba_kafelek];
-    Bonus[] fallingBonus = new Bonus[liczba_kafelek];
+    Bonus[] fallingBonus = new Bonus[liczba_kafelek];*/
+
+
+    int liczba_kafelek;
+    int livingBricks;
+    Kafelka[] k;
+    Bonus[] fallingBonus;
+
 
     int score = 0;
-    int skillCoins = 2;
+    int skillCoins = 0;
 
     boolean gameOver = false;
     boolean gamePaused = false;
     boolean engineStartFlag = false;
     boolean freezeAndFlyToPoint=false;
+    boolean updatedStatistics=false;
 
     Point mouseTip = new Point(0,0);
-
-
-
     GamePanel gamePanel;
+    Level level;
 
-   Plansza(GamePanel gamePanel)
+    JButton conti, retry;
+
+   Plansza(GamePanel gamePanel, int lvl)
    {
-      super();
-      addMouseMotionListener(this);
-      addMouseListener(this);
-      setFocusable(true);
-      addKeyListener(this);
+       super();
 
-      this.gamePanel = gamePanel;
+       level = new Level(lvl, this);
+       liczba_kafelek = level.getBricksNumber();
+       livingBricks = level.getBricksNumber();
+       k = level.getBricks();
+       fallingBonus = level.getFallingBonus();
+
+       conti = new JButton("Continue");
+       conti.setBounds(50, 100, 100, 30);
+       retry = new JButton("Retry");
+       retry.setBounds(50, 150, 100, 30);
+
+       conti.addActionListener(this);
+       retry.addActionListener(this);
+
+       setLayout(null);
+
+
+       addMouseMotionListener(this);
+       addMouseListener(this);
+       setFocusable(true);
+       addKeyListener(this);
+
+       this.gamePanel = gamePanel;
 
        b=new Belka(325-40, 525);
        floor=new Floor(this, 0, 455, 650);
 
-
        for(int w=0; w<maxAmountOfBalls; w++)
            a[w]=new Kulka(this,325-5,515,0,-2, false);
        a[0].isAlive=true;
-
-
+        /*
        for (int i=0; i<liczba_kafelek; i++){
-           k[i]=new Kafelka(this, i%columns, i/columns, 718f/columns, 1);
+           //k[i]=new Kafelka(this, i%columns, i/columns, 718f/columns, 0);
            fallingBonus[i] = new Bonus(this,i%columns, i/columns, 718f/columns);
-       }
-
+       } */
        bonusEngine = new BonusEngine(this, this.gamePanel);
        loadTextures();
        setOpaque(false);
-
    }
 
 
@@ -78,7 +102,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
 
    public void paintComponent(Graphics g)
    {
-
        super.paintComponent(g);
        g2d=(Graphics2D)g;
 
@@ -91,6 +114,14 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
            g.setFont(new Font("Dialog", Font.BOLD, 20));
            g2d.drawString("YOU WON!", getSize().width/2 - 65, getSize().height/2+30);
            g2d.drawString("SCORE: " + score, getSize().width/2 - 65, getSize().height/2+60);
+           if (!updatedStatistics){
+               gamePanel.mainFrame.getGameStatistics().gameWon();
+               add(conti);
+               add(retry);
+               updatedStatistics=true;
+           }
+
+
 
        }else{
 
@@ -104,7 +135,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                    requestFocus();
                }
 
-
                g2d.setPaint(barColor);
                g2d.fill(b);
                g2d.setPaint(new GradientPaint(b.x,b.y, new Color(32,178,170), b.x+(int)(b.width*b.roundPercentage), b.y+b.height, barColor));
@@ -114,9 +144,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                g2d.fill(new Rectangle2D.Float((b.x + (int) (b.width*(1- b.roundPercentage))) ,b.y, (int) (b.width * b.roundPercentage), b.height));
 
                if(floor.isAlive){
-                   //g2d.setPaint(floor.getTexture());
-                   //g2d.setStroke(new BasicStroke(2f));
-                   //g2d.draw(floor);
                    g2d.setPaint(new TexturePaint(floor.getTexture(), (Rectangle2D) floor));
                    g2d.fill(floor);
                }
@@ -124,7 +151,6 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                for(int i=0; i<liczba_kafelek; i++){
 
                    if (fallingBonus[i].isAlive){
-                       //g2d.setPaint(fallingBonus[i].getTexture());
                        g2d.setPaint(new TexturePaint(fallingBonus[i].getTexture(), (Rectangle2D) fallingBonus[i]));
                        g2d.fill(fallingBonus[i]);
                    }
@@ -145,13 +171,17 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
                }
 
                if (!engineStartFlag){
+                   g2d.setPaint(new Color(111, 114, 114));
+                   g.setFont(new Font("Dialog", Font.BOLD, 16));
+                   g2d.drawString("LEVEL "+level.level, 180, 280);
+
                    g2d.setPaint(new Color(63, 75, 68));
                    g.setFont(new Font("Dialog", Font.BOLD, 20));
-                   //g2d.drawString("LEFT CLICK", 150, 320);
+                   g2d.drawString("LEFT CLICK", 180, 320);
 
                    g2d.setPaint(new Color(76, 57, 74));
                    g.setFont(new Font("Dialog", Font.BOLD, 17));
-                   //g2d.drawString("TO SHOOT THE BALL!", 300, 320);
+                   g2d.drawString("TO SHOOT THE BALL!", 330, 320);
                }
 
                if(gamePaused){
@@ -179,8 +209,15 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
              g2d.setPaint(new Color(76, 57, 74));
              g.setFont(new Font("Dialog", Font.BOLD, 20));
              g2d.drawString("GAME OVER", getSize().width/2 - 65, getSize().height/2+30);
+
              gamePanel.eastPanel.removeAll();
              gamePanel.eastPanel.repaint();
+
+               if (!updatedStatistics){
+                   gamePanel.mainFrame.getGameStatistics().gameLost();;
+                   add(retry);
+                   updatedStatistics=true;
+               }
           }
 
        }
@@ -223,24 +260,29 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     public void mouseClicked(MouseEvent e){
         System.out.println("CLICKED!");
 
-        if(freezeAndFlyToPoint){
-            mouseTip.setLocation(e.getX()-5, e.getY()-5);
-            freezeAndFlyToPoint(false);
-        }
+
 
         if(!engineStartFlag){
             engineStartFlag =true;
             ballsEngine =new SilnikKulki(this, a);
         }
 
-        for(int w=0; w<maxAmountOfBalls; w++){
-            if(a[w].isAlive){
-                if(!a[w].isFlying){
-                    a[w].isFlying = true;
-                    w=maxAmountOfBalls+10;
+        if(!freezeAndFlyToPoint){
+            for(int w=0; w<maxAmountOfBalls; w++){
+                if(a[w].isAlive){
+                    if(!a[w].isFlying){
+                        a[w].isFlying = true;
+                        w=maxAmountOfBalls+10;
+                    }
                 }
             }
         }
+
+        if(freezeAndFlyToPoint){
+            mouseTip.setLocation(e.getX()-5, e.getY()-5);
+            freezeAndFlyToPoint(false);
+        }
+
     }
 
     public void mouseDragged(MouseEvent e)
@@ -277,16 +319,23 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     public void keyReleased(KeyEvent keyEvent) {
         System.out.println("You typed: " + keyEvent.getKeyCode());
 
-        if(!gamePaused){
-            if(keyEvent.getKeyCode() == 81){
-                //FREEZE AND FLY TO POINT
-                if(skillCoins>0){
-                    skillCoins--;
-                    gamePanel.eastPanel.repaint();
-                    freezeAndFlyToPoint(true);
+        if(engineStartFlag){
+            if(!gamePaused){
+                if(!freezeAndFlyToPoint){
+                    if(keyEvent.getKeyCode() == 81){
+                        //FREEZE AND FLY TO POINT
+                        if(skillCoins>0){
+                            skillCoins--;
+                            gamePanel.eastPanel.repaint();
+                            freezeAndFlyToPoint(true);
+                        }
+                    }
                 }
+
+
             }
         }
+
 
 
         if(keyEvent.getKeyCode() == 27){
@@ -309,12 +358,12 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     public void freezeAndFlyToPoint(boolean start){
        if(start){
            freezeAndFlyToPoint=true;
-           ballsEngine.justWait=true;
-           bonusEngine.doRepaint=true;
+           //ballsEngine.justWait=true;
+           //bonusEngine.doRepaint=true;
        }else{
            freezeAndFlyToPoint=false;
-           ballsEngine.justWait=false;
-           bonusEngine.doRepaint=false;
+           //ballsEngine.justWait=false;
+           //bonusEngine.doRepaint=false;
 
            for(int w=0; w<maxAmountOfBalls; w++){
                if (a[w].isAlive){
@@ -326,4 +375,14 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
        }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == conti){
+            gamePanel.createGameNextLevel();
+
+        }else if(actionEvent.getSource() == retry){
+            gamePanel.createGame(level.level);
+
+        }
+    }
 }

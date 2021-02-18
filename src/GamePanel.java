@@ -13,17 +13,21 @@ public class GamePanel extends JPanel implements ActionListener {
     JPanel westPanel;
     JPanel eastPanel;
     JPanel southPanel;
+    JPanel panel;
+    Plansza plansza;
+    JPanel gameContentPane;
 
     GamePanel(MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         northPanel = new JPanel();
         westPanel = new JPanel();
         eastPanel = new JPanel();
         southPanel = new JPanel();
+
 
         northPanel.setBackground(backgroundColor);
         northPanel.setOpaque(false);
@@ -47,7 +51,9 @@ public class GamePanel extends JPanel implements ActionListener {
         southPanel.setPreferredSize(new Dimension(50, 50));
 
 
-        Plansza plansza = new Plansza(this);
+        plansza = new Plansza(this, mainFrame.getGameStatistics().getMaxUnlockedLevel());
+
+
         panel.setOpaque(false);
         panel.add(plansza);
         panel.setLayout(new GridLayout(1,1));
@@ -89,5 +95,21 @@ public class GamePanel extends JPanel implements ActionListener {
             CardLayout cl = (CardLayout) mainFrame.cardsPanel.getLayout();
             cl.show(mainFrame.cardsPanel, mainFrame.mainMenuPanel.getCardName());
         }
+    }
+
+    public void createGame(int level){
+        panel.removeAll();
+        plansza = new Plansza(this, level);
+        panel.add(plansza);
+        panel.revalidate();
+
+    }
+
+    public void createGameNextLevel(){
+        panel.removeAll();
+        plansza = new Plansza(this, mainFrame.getGameStatistics().getMaxUnlockedLevel());
+        panel.add(plansza);
+        panel.revalidate();
+
     }
 }

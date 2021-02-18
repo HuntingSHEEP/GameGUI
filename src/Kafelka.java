@@ -33,12 +33,12 @@ class Kafelka extends Rectangle2D.Float
         //bonus = 1;
         this.p = p;
         this.brickType=brickType;
-        this.flaga_ZYCIA=2;
+        this.flaga_ZYCIA=1;
 
         if(brickType == 0)
-            this.flaga_ZYCIA=2;
+            this.flaga_ZYCIA=1;
         else if(brickType == 1)
-            this.flaga_ZYCIA=3;
+            this.flaga_ZYCIA=2;
 
         textures = new BufferedImage[3];
         loadTextures();
@@ -73,7 +73,7 @@ class Kafelka extends Rectangle2D.Float
         if ( (0<=bonus) && (bonus <=10)){
 
             p.fallingBonus[index].type = bonus%10;
-            p.fallingBonus[index].type = 5;
+            p.fallingBonus[index].type = 8;
             p.fallingBonus[index].isAlive = true;
             p.fallingBonus[index].liveCycles = p.getSize().height+5;
 

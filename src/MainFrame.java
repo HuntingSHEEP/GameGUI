@@ -14,10 +14,13 @@ public class MainFrame extends JFrame implements ActionListener {
     LevelsPanel levelsPanel;
     GamePanel gamePanel;
     SettingsPanel settingsPanel;
+    GameStatistics gameStatistics;
 
 
     MainFrame(){
         super();
+        loadGameStatistics();
+
         cardsPanel = new JPanel(new CardLayout());
 
         mainMenuPanel = new MainMenuPanel(this);
@@ -40,6 +43,14 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setResizable(false);
         this.setVisible(true);
 
+    }
+
+    private void loadGameStatistics() {
+        gameStatistics = new GameStatistics();
+    }
+
+    public GameStatistics getGameStatistics(){
+        return gameStatistics;
     }
 
     @Override
