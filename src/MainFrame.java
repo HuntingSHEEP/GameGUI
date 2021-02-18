@@ -42,7 +42,6 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setMaximumSize(new Dimension(820, 700));
         this.setResizable(false);
         this.setVisible(true);
-
     }
 
     private void loadGameStatistics() {

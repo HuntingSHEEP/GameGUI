@@ -7,13 +7,14 @@ public class LevelsPanel extends JPanel implements ActionListener {
     BackToMainMenuButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
+    JPanel panel;
 
     LevelsPanel(MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         JPanel northPanel = new JPanel();
         JPanel westPanel = new JPanel();
         JPanel eastPanel = new JPanel();
@@ -31,7 +32,8 @@ public class LevelsPanel extends JPanel implements ActionListener {
         southPanel.setBackground(backgroundColor);
         southPanel.setPreferredSize(new Dimension(50, 50));
 
-        panel.setBackground(Color.BLUE);
+        panel.setBackground(backgroundColor);
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
 
         backToMainMenuButton = new BackToMainMenuButton();
         backToMainMenuButton.addActionListener(this);
@@ -46,7 +48,18 @@ public class LevelsPanel extends JPanel implements ActionListener {
         this.add(eastPanel, BorderLayout.EAST);
         this.add(southPanel, BorderLayout.SOUTH);
         this.add(panel, BorderLayout.CENTER);
+        loadLevelButtons();
 
+    }
+
+    private void loadLevelButtons() {
+        int maxUnlockedLevel = mainFrame.getGameStatistics().getMaxUnlockedLevel();
+        Level level = new Level();
+        panel.removeAll();
+        for(int i=0; i<level.getNumberOfLevels(); i++){
+            panel.add(level.getButton(i));
+
+        }
     }
 
     public String getCardName(){
