@@ -13,8 +13,9 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
     ViewPanel(){
         super();
         setLayout(null);
-        setPreferredSize(new Dimension(1000,700));
-        setBorder(new MatteBorder(5, 5, 5, 5, Color.BLUE));
+        setPreferredSize(new Dimension(1000,1000));
+        //setBorder(new MatteBorder(5, 5, 5, 5, Color.BLUE));
+        setOpaque(false);
 
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(this);
@@ -22,13 +23,27 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         ((JViewport) getParent()).setViewPosition(new Point(50, 50));
+
         addMouseListener(this);
         addMouseMotionListener(this);
+
+        ImageIcon icon = new ImageIcon("textures/skillsTree.png");
+        JLabel iconLabel = new JLabel();
+
+        iconLabel.setBounds(0,0,700,700);
+        iconLabel.setIcon(icon);
     }
 
     public JScrollPane getScrollPane(){
         return scrollPane;
     }
+
+    public void paintComponent(Graphics g){
+        ImageIcon icon = new ImageIcon("textures/skillsTree.png");
+        g.drawImage(icon.getImage(),50,25,null);
+    }
+
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -58,6 +73,7 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        /*
         Point dragPoint = e.getPoint();
         JViewport viewPort = (JViewport) getParent();
         Point viewStartPoint = viewPort.getViewPosition();
@@ -87,6 +103,7 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
 
         mouseGrabPoint = dragPoint;
         viewPort.setViewPosition(viewStartPoint);
+        */
     }
 
     @Override

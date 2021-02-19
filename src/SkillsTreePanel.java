@@ -33,18 +33,20 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
 
         backToMainMenuButton = new BackToMainMenuButton();
         backToMainMenuButton.addActionListener(this);
-        southPanel.add(backToMainMenuButton);
-        southPanel.setLayout(null);
+        backToMainMenuButton.setTreeBounds();
+
+        panel.add(backToMainMenuButton);
+        //southPanel.setLayout(null);
 
         setBackground(backgroundColor);
         setLayout(new BorderLayout());
 
 
-        this.add(northPanel, BorderLayout.NORTH);
-        this.add(westPanel, BorderLayout.WEST);
-        this.add(eastPanel, BorderLayout.EAST);
-        this.add(southPanel, BorderLayout.SOUTH);
-        this.add(panel.getScrollPane(), BorderLayout.CENTER);
+        //this.add(northPanel, BorderLayout.NORTH);
+        //this.add(westPanel, BorderLayout.WEST);
+        //this.add(eastPanel, BorderLayout.EAST);
+        //this.add(southPanel, BorderLayout.SOUTH);
+        this.add(panel, BorderLayout.CENTER);
 
     }
 

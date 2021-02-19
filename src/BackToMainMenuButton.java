@@ -36,7 +36,7 @@ class BackToMainMenuButton extends JButton {
             g.setColor(hoverBackgroundColor);
         } else {
             setIcon(unselected);
-            g.setColor(getBackground());
+            g.setColor(pressedBackgroundColor);
         }
         g.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
@@ -61,5 +61,9 @@ class BackToMainMenuButton extends JButton {
 
     public void setPressedBackgroundColor(Color pressedBackgroundColor) {
         this.pressedBackgroundColor = pressedBackgroundColor;
+    }
+
+    public void setTreeBounds() {
+        setBounds(10, 620, 30, 30);
     }
 }
