@@ -13,7 +13,7 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
 
-        JPanel panel = new JPanel();
+        ViewPanel panel = new ViewPanel();
         JPanel northPanel = new JPanel();
         JPanel westPanel = new JPanel();
         JPanel eastPanel = new JPanel();
@@ -39,11 +39,12 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         setBackground(backgroundColor);
         setLayout(new BorderLayout());
 
+
         this.add(northPanel, BorderLayout.NORTH);
         this.add(westPanel, BorderLayout.WEST);
         this.add(eastPanel, BorderLayout.EAST);
         this.add(southPanel, BorderLayout.SOUTH);
-        this.add(panel, BorderLayout.CENTER);
+        this.add(panel.getScrollPane(), BorderLayout.CENTER);
 
     }
 
