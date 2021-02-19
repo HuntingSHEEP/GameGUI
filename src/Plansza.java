@@ -112,8 +112,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
            bonusEngine.running=false;
            g2d.setPaint(new Color(63, 75, 68));
            g.setFont(new Font("Dialog", Font.BOLD, 20));
-           g2d.drawString("YOU WON!", getSize().width/2 - 65, getSize().height/2+30);
-           g2d.drawString("SCORE: " + score, getSize().width/2 - 65, getSize().height/2+60);
+           g2d.drawString("YOU WON!", getSize().width/2 - 80, getSize().height/2+30);
+           g2d.drawString("SCORE: " + score, getSize().width/2 - 80, getSize().height/2+60);
            if (!updatedStatistics){
                gamePanel.mainFrame.getGameStatistics().gameWon(level.level);
                add(conti);
