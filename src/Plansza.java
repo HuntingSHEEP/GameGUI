@@ -48,7 +48,9 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
     GamePanel gamePanel;
     Level level;
 
-    JButton conti, retry;
+    //JButton conti, retry;
+    ContinueButton conti;
+    RetryButton retry;
 
    Plansza(GamePanel gamePanel, int lvl)
    {
@@ -60,10 +62,8 @@ class Plansza extends JPanel implements MouseMotionListener, MouseListener, KeyL
        k = level.getBricks();
        fallingBonus = level.getFallingBonus();
 
-       conti = new JButton("Continue");
-       conti.setBounds(50, 100, 100, 30);
-       retry = new JButton("Retry");
-       retry.setBounds(50, 150, 100, 30);
+       conti = new ContinueButton();
+       retry = new RetryButton();
 
        conti.addActionListener(this);
        retry.addActionListener(this);
