@@ -1,14 +1,13 @@
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 
-class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
+class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, ActionListener {
     private JScrollPane scrollPane;
     private Point mouseGrabPoint = null;
+    private Point mouseTip = new Point(0,0);
 
     ViewPanel(){
         super();
@@ -41,13 +40,38 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
     public void paintComponent(Graphics g){
         ImageIcon icon = new ImageIcon("textures/skillsTree.png");
         g.drawImage(icon.getImage(),50,25,null);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setStroke(new BasicStroke(2.5f));
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setPaint(new Color(0, 252, 214, 250));
+        g.drawLine(349, 283, 284, 249);
+        g.drawLine(284,208,320,195);
+        g.drawLine(253,208,216,182);
+        g.drawLine(185,140,150,124);
+        g.drawLine(254,249,216,277);
+        g.drawLine(186,277,164,260);
+        g.drawLine(185,317,165,334);
+        g.drawLine(132,334,93,317);
+        g.drawLine(368,317,365,383);
+
+        int R = 900;
+        int r = 2;
+        int move = 0;
+        g2d.setStroke(new BasicStroke(1f));
+        g2d.setPaint(new Color(1, 141, 138));
+        g.drawLine(mouseTip.x - R-move, mouseTip.y-move, mouseTip.x - r-move, mouseTip.y-move);
+        g.drawLine(mouseTip.x + r-move, mouseTip.y-move, mouseTip.x + R-move, mouseTip.y-move);
+        g.drawLine(mouseTip.x-move, mouseTip.y - R-move, mouseTip.x-move, mouseTip.y - r-move);
+        g.drawLine(mouseTip.x-move, mouseTip.y + r-move, mouseTip.x-move, mouseTip.y + R-move);
+
     }
 
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        System.out.println(e.getPoint());
     }
 
     @Override
@@ -108,6 +132,13 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
+        mouseTip = e.getPoint();
+        repaint();
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
     }
 }

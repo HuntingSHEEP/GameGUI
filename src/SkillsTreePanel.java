@@ -56,10 +56,48 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
 
     private void addButtons(){
         SkillButton startButton = new SkillButton();
+        SkillButton plusBall = new SkillButton();
+        SkillButton iceBall = new SkillButton();
+        SkillButton fireBall = new SkillButton();
+        SkillButton barExtension = new SkillButton();
+        SkillButton roundExtend = new SkillButton();
+        SkillButton stickyBar = new SkillButton();
+        SkillButton shortenBar = new SkillButton();
+        SkillButton shortenRound = new SkillButton();
+        SkillButton ballSpeed = new SkillButton();
+        SkillButton magnetFloor = new SkillButton();
+        SkillButton floor = new SkillButton();
+        SkillButton flyToPoint = new SkillButton();
 
-        //startButton.equipStart();
+        startButton.equipStart();
+        plusBall.equipAddBall();
+        iceBall.equipIce();
+        fireBall.equipFire();
+        barExtension.equipBarExtension();
+        roundExtend.equipRoundExtension();
+        stickyBar.equipSticky();
+        shortenBar.equipShortenBar();
+        shortenRound.equipShortenRound();
+        ballSpeed.equipBallSpeed();
+        magnetFloor.equipMagnetFloor();
+        floor.equipFloor();
+        flyToPoint.equipFlyToPoint();
 
+
+/*
         panel.add(startButton);
+        panel.add(plusBall);
+        panel.add(iceBall);
+        panel.add(fireBall);
+        panel.add(barExtension);
+        panel.add(roundExtend);
+        panel.add(stickyBar);
+        panel.add(shortenBar);
+        panel.add(shortenRound);
+        panel.add(ballSpeed);
+        panel.add(magnetFloor);
+        panel.add(floor);
+        panel.add(flyToPoint); */
     }
 
     @Override
