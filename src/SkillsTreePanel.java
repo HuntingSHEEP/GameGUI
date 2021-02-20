@@ -7,13 +7,14 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     BackToMainMenuButton backToMainMenuButton;
     MainFrame mainFrame;
     Color backgroundColor;
+    ViewPanel panel;
 
     SkillsTreePanel(MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
 
-        ViewPanel panel = new ViewPanel();
+        panel = new ViewPanel();
         JPanel northPanel = new JPanel();
         JPanel westPanel = new JPanel();
         JPanel eastPanel = new JPanel();
@@ -41,17 +42,24 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         setBackground(backgroundColor);
         setLayout(new BorderLayout());
 
-
         //this.add(northPanel, BorderLayout.NORTH);
         //this.add(westPanel, BorderLayout.WEST);
         //this.add(eastPanel, BorderLayout.EAST);
         //this.add(southPanel, BorderLayout.SOUTH);
         this.add(panel, BorderLayout.CENTER);
-
+        addButtons();
     }
 
     public String getCardName(){
         return "1";
+    }
+
+    private void addButtons(){
+        SkillButton startButton = new SkillButton();
+
+        //startButton.equipStart();
+
+        panel.add(startButton);
     }
 
     @Override
