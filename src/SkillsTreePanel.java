@@ -69,6 +69,22 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         SkillButton floor = new SkillButton();
         SkillButton flyToPoint = new SkillButton();
 
+        SkillButton iceRadius = new SkillButton();
+        SkillButton ballX2 = new SkillButton();
+        SkillButton fireForce = new SkillButton();
+        SkillButton fireTime = new SkillButton();
+        SkillButton barMaxSize = new SkillButton();
+        SkillButton barDX = new SkillButton();
+        SkillButton barShortBonus = new SkillButton();
+        SkillButton stickyBarTime = new SkillButton();
+        SkillButton shortRoundBonus = new SkillButton();
+        SkillButton ballSpeedBonus = new SkillButton();
+        SkillButton ballSpeedTime = new SkillButton();
+        SkillButton magnetFloorTime = new SkillButton();
+        SkillButton floorTime = new SkillButton();
+        SkillButton freeze = new SkillButton();
+        SkillButton flyThrough = new SkillButton();
+
         startButton.equipStart();
         plusBall.equipAddBall();
         iceBall.equipIce();
@@ -82,9 +98,24 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         magnetFloor.equipMagnetFloor();
         floor.equipFloor();
         flyToPoint.equipFlyToPoint();
+        iceRadius.equipRadius();
+        ballX2.equipX2();
+        fireForce.equipForce();
+        fireTime.equipFireTime();
+        barMaxSize.equipBarMaxSize();
+        barDX.equipBarDX();
+        barShortBonus.equipBarShorteningBonus();
+        stickyBarTime.equipStickyTime();
+        shortRoundBonus.equipShortRoundBonus();
+        ballSpeedBonus.equipBallSpeedBonus();
+        ballSpeedTime.equipBallSpeedTime();
+        magnetFloorTime.equipMagnetFloorTime();
+        floorTime.equipFloorTime();
+        freeze.equipFreeze();
+        flyThrough.equipFlyThrough();
 
 
-/*
+
         panel.add(startButton);
         panel.add(plusBall);
         panel.add(iceBall);
@@ -97,7 +128,23 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         panel.add(ballSpeed);
         panel.add(magnetFloor);
         panel.add(floor);
-        panel.add(flyToPoint); */
+        panel.add(flyToPoint);
+        panel.add(iceRadius);
+        panel.add(ballX2);
+        panel.add(fireForce);
+        panel.add(fireTime);
+        panel.add(barMaxSize);
+        panel.add(barDX);
+        panel.add(barShortBonus);
+        panel.add(stickyBarTime);
+        panel.add(shortRoundBonus);
+        panel.add(ballSpeedBonus);
+        panel.add(ballSpeedTime);
+        panel.add(magnetFloorTime);
+        panel.add(floorTime);
+        panel.add(freeze);
+        panel.add(flyThrough);
+
     }
 
     @Override

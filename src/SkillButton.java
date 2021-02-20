@@ -154,4 +154,109 @@ class SkillButton extends JButton {
         unselected = new ImageIcon("textures/rab.png");
         setBounds(334, 500, 62, 84);
     }
+
+    public void equipRadius() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(110, 86, 47, 47);
+    }
+
+    public void equipX2() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(314, 156, 47, 47);
+    }
+
+    public void equipForce() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(125, 221, 47, 47);
+    }
+
+    public void equipFireTime() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(125, 327, 47, 47);
+    }
+
+    public void equipBarMaxSize() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(510, 156, 47, 47);
+    }
+
+    public void equipBarDX() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(510, 270, 47, 47);
+    }
+
+    public void equipBarShorteningBonus() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(526, 25, 47, 47);
+    }
+
+    public void equipStickyTime() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(722, 277, 47, 47);
+    }
+
+    public void equipShortRoundBonus() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(629, 419, 47, 47);
+    }
+
+    public void equipBallSpeedBonus() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(480, 368, 47, 47);
+    }
+
+    public void equipBallSpeedTime() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(405, 335, 47, 47);
+    }
+
+    public void equipMagnetFloorTime() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(473, 490, 47, 47);
+    }
+
+    public void equipFloorTime() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(208, 494, 47, 47);
+    }
+
+    public void equipFreeze() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(277, 561, 47, 47);
+    }
+
+    public void equipFlyThrough() {
+        selected = new ImageIcon("textures/kolo.png");
+        hovered = new ImageIcon("textures/kolo.png");
+        unselected = new ImageIcon("textures/kolo2.png");
+        setBounds(53, 279, 47, 47);
+    }
 }
