@@ -48,6 +48,10 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         //this.add(southPanel, BorderLayout.SOUTH);
         this.add(panel, BorderLayout.CENTER);
         addButtons();
+        setupButtons();
+    }
+
+    private void setupButtons() {
     }
 
     public String getCardName(){
