@@ -8,7 +8,7 @@ public class GameStatistics {
     /* IMPORTANT
     * 0 > indicates the skill is blocked and can't be purchased
     * 1 > indicates the skill is available to buy
-    * 2 > indicates the skill is beeing bought
+    * 2 > indicates the skill is being bought
     */
     private int plusBall=1;
     private int ballSpeed=1;
@@ -19,6 +19,22 @@ public class GameStatistics {
         gamesPlayed = 0;
         gamesWon = 0;
         gamesLost = 0;
+    }
+
+    public void unlockButtons(int[] list){
+        for (int j : list) buttonUP(j);
+
+    }
+
+    public void buttonUP(int bNumber){
+        skillPoints--;
+        if(bNumber==0)
+            plusBall++;
+        else if(bNumber==1)
+            ballSpeed++;
+        else if(bNumber==2)
+            barExtension++;
+
     }
 
     public int getPlusBallStatus(){

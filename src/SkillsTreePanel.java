@@ -171,18 +171,17 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
             CardLayout cl = (CardLayout) mainFrame.cardsPanel.getLayout();
             cl.show(mainFrame.cardsPanel, mainFrame.mainMenuPanel.getCardName());
         }else{
-            //If enough points
-            SkillButton button = (SkillButton) actionEvent.getSource();
-            int skillCode = button.getSkillCode();
-            button.up();
-            int[] children = button.getChildren();
+            if(gs.getSkillPoints()>0){
+                SkillButton button = (SkillButton) actionEvent.getSource();
+                button.up();
+                gs.buttonUP(button.getSkillCode());
+                gs.unlockButtons(button.getChildren());
 
-            for (int x=0; x<children.length; x++){
-                System.out.println("Child: "+children[x]);
-
+                revalidate();
+                repaint();
             }
-
-            System.out.println("SkillCode "+skillCode);
         }
+
+
     }
 }
