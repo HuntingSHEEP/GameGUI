@@ -10,6 +10,9 @@ class SkillButton extends JButton {
     private ImageIcon unselected = new ImageIcon("textures/start2.png");
 
     ViewPanel panel;
+    private int skillStatus;
+    private int skill=-1;
+    private int[] children;
 
     public SkillButton() {
         this(null);
@@ -64,14 +67,29 @@ class SkillButton extends JButton {
         this.pressedBackgroundColor = pressedBackgroundColor;
     }
 
+    public int getSkillCode(){
+        return skill;
+    }
+
+    public void up(){
+
+    }
+
     public void equipStart() {
         selected = new ImageIcon("textures/start.png");
         hovered = new ImageIcon("textures/start.png");
         unselected = new ImageIcon("textures/start2.png");
         setBounds(325, 240, 90, 90);
+        setHorizontalTextPosition(JLabel.CENTER);
+        setVerticalTextPosition(JLabel.BOTTOM);
+        setIconTextGap(-35);
+        setForeground(new Color(255, 211, 0, 100));
+
     }
 
     public void equipAddBall() {
+        skill = 0;
+        children = new int[] {5, 6, 7};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -93,6 +111,7 @@ class SkillButton extends JButton {
     }
 
     public void equipBarExtension() {
+        skill = 2;
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -128,6 +147,7 @@ class SkillButton extends JButton {
     }
 
     public void equipBallSpeed() {
+        skill = 1;
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -258,5 +278,22 @@ class SkillButton extends JButton {
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
         setBounds(53, 279, 47, 47);
+    }
+
+    public void updateStatus(int status) {
+        skillStatus = status;
+
+        if (status == 0){
+            setEnabled(false);
+            //setDisabledIcon(selected);
+        }else if(status == 1){
+            setEnabled(true);
+        }else if(status == 2){
+            setEnabled(true);
+        }
+    }
+
+    public int[] getChildren() {
+        return children;
     }
 }

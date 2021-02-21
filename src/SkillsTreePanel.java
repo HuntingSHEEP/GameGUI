@@ -8,11 +8,16 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     MainFrame mainFrame;
     Color backgroundColor;
     ViewPanel panel;
+    GameStatistics gs;
+
+    SkillButton startButton;
+    SkillButton plusBall, ballSpeed, barExtension;
 
     SkillsTreePanel(MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         backgroundColor = new Color(0x222222);
+        gs = mainFrame.getGameStatistics();
 
         panel = new ViewPanel();
         JPanel northPanel = new JPanel();
@@ -52,6 +57,11 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     }
 
     private void setupButtons() {
+        startButton.setText(""+gs.getSkillPoints());
+        plusBall.updateStatus(gs.getPlusBallStatus());
+        ballSpeed.updateStatus(gs.getBallSpeedStatus());
+        barExtension.updateStatus(gs.getBarExtensionStatus());
+
     }
 
     public String getCardName(){
@@ -59,16 +69,16 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     }
 
     private void addButtons(){
-        SkillButton startButton = new SkillButton();
-        SkillButton plusBall = new SkillButton();
+        startButton = new SkillButton();
+        plusBall = new SkillButton();
         SkillButton iceBall = new SkillButton();
         SkillButton fireBall = new SkillButton();
-        SkillButton barExtension = new SkillButton();
+        barExtension = new SkillButton();
         SkillButton roundExtend = new SkillButton();
         SkillButton stickyBar = new SkillButton();
         SkillButton shortenBar = new SkillButton();
         SkillButton shortenRound = new SkillButton();
-        SkillButton ballSpeed = new SkillButton();
+        ballSpeed = new SkillButton();
         SkillButton magnetFloor = new SkillButton();
         SkillButton floor = new SkillButton();
         SkillButton flyToPoint = new SkillButton();
@@ -118,6 +128,10 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         freeze.equipFreeze();
         flyThrough.equipFlyThrough();
 
+        plusBall.addActionListener(this);
+        barExtension.addActionListener(this);
+        ballSpeed.addActionListener(this);
+
 
 
         panel.add(startButton);
@@ -156,6 +170,19 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         if(actionEvent.getSource() == backToMainMenuButton){
             CardLayout cl = (CardLayout) mainFrame.cardsPanel.getLayout();
             cl.show(mainFrame.cardsPanel, mainFrame.mainMenuPanel.getCardName());
+        }else{
+            //If enough points
+            SkillButton button = (SkillButton) actionEvent.getSource();
+            int skillCode = button.getSkillCode();
+            button.up();
+            int[] children = button.getChildren();
+
+            for (int x=0; x<children.length; x++){
+                System.out.println("Child: "+children[x]);
+
+            }
+
+            System.out.println("SkillCode "+skillCode);
         }
     }
 }
