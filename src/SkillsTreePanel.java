@@ -14,7 +14,8 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
     SkillButton plusBall, ballSpeed, barExtension, iceBall, ballX2
             ,fireBall,iceRadius,fireForce,fireTime,flyThrough,ballSpeedTime,
             ballSpeedBonus,floor,magnetFloor,magnetFloorTime,floorTime,
-            flyToPoint,freeze;
+            flyToPoint,freeze,barDX,barMaxSize,shortenBar,barShortBonus,
+            roundExtend,shortenRound,shortRoundBonus,stickyBar,stickyBarTime;
 
     SkillsTreePanel(MainFrame mainFrame){
         super();
@@ -81,6 +82,16 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         floorTime.updateStatus(gs.getFloorTimeStatus());
         flyToPoint.updateStatus(gs.getFlyToPointStatus());
         freeze.updateStatus(gs.getFreezeStatus());
+        //
+        barDX.updateStatus(gs.getBarDXStatus());
+        barMaxSize.updateStatus(gs.getBarMaxSizeStatus());
+        shortenBar.updateStatus(gs.getShortenBarStatus());
+        barShortBonus.updateStatus(gs.getBarShortBonusStatus());
+        roundExtend.updateStatus(gs.getBarRoundExtendStatus());
+        shortenRound.updateStatus(gs.getBarShortenRoundStatus());
+        shortRoundBonus.updateStatus(gs.getBarShortRoundBonusStatus());
+        stickyBar.updateStatus(gs.getStickyBarStatus());
+        stickyBarTime.updateStatus(gs.getStickyBarTimeStatus());
 
     }
 
@@ -94,10 +105,10 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         iceBall = new SkillButton();
         fireBall = new SkillButton();
         barExtension = new SkillButton();
-        SkillButton roundExtend = new SkillButton();
-        SkillButton stickyBar = new SkillButton();
-        SkillButton shortenBar = new SkillButton();
-        SkillButton shortenRound = new SkillButton();
+        roundExtend = new SkillButton();
+        stickyBar = new SkillButton();
+        shortenBar = new SkillButton();
+        shortenRound = new SkillButton();
         ballSpeed = new SkillButton();
         magnetFloor = new SkillButton();
         floor = new SkillButton();
@@ -107,11 +118,11 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         ballX2 = new SkillButton();
         fireForce = new SkillButton();
         fireTime = new SkillButton();
-        SkillButton barMaxSize = new SkillButton();
-        SkillButton barDX = new SkillButton();
-        SkillButton barShortBonus = new SkillButton();
-        SkillButton stickyBarTime = new SkillButton();
-        SkillButton shortRoundBonus = new SkillButton();
+        barMaxSize = new SkillButton();
+        barDX = new SkillButton();
+        barShortBonus = new SkillButton();
+        stickyBarTime = new SkillButton();
+        shortRoundBonus = new SkillButton();
         ballSpeedBonus = new SkillButton();
         ballSpeedTime = new SkillButton();
         magnetFloorTime = new SkillButton();
@@ -168,6 +179,15 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         floorTime.addActionListener(this);
         flyToPoint.addActionListener(this);
         freeze.addActionListener(this);
+        barDX.addActionListener(this);
+        barMaxSize.addActionListener(this);
+        shortenBar.addActionListener(this);
+        barShortBonus.addActionListener(this);
+        roundExtend.addActionListener(this);
+        shortenRound.addActionListener(this);
+        shortRoundBonus.addActionListener(this);
+        stickyBar.addActionListener(this);
+        stickyBarTime.addActionListener(this);
 
 
 

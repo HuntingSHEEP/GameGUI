@@ -20,7 +20,8 @@ public class GameStatistics {
         gamesPlayed = 0;
         gamesWon = 0;
         gamesLost = 0;
-        skills = new int[] {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        skills = new int[] {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+                ,0,0,0,0,0,0,0,0,0,0,0,0};
     }
 
     public void unlockButtons(int[] list){
@@ -29,17 +30,14 @@ public class GameStatistics {
     }
 
     public void buttonUP(int bNumber, boolean spendSP){
-        if(spendSP)
+        if(spendSP){
             skillPoints--;
-
-        skills[bNumber]++;
-
-        if(bNumber==0)
-            plusBall++;
-        else if(bNumber==1)
-            ballSpeed++;
-        else if(bNumber==2)
-            barExtension++;
+            skills[bNumber]++;
+        }
+        else{
+            if(skills[bNumber]==0)
+                skills[bNumber]++;
+        }
 
     }
 
@@ -134,5 +132,41 @@ public class GameStatistics {
 
     public int getFreezeStatus() {
         return skills[17];
+    }
+
+    public int getBarDXStatus() {
+        return skills[18];
+    }
+
+    public int getBarMaxSizeStatus() {
+        return skills[19];
+    }
+
+    public int getShortenBarStatus() {
+        return skills[20];
+    }
+
+    public int getBarShortBonusStatus() {
+        return skills[21];
+    }
+
+    public int getBarRoundExtendStatus() {
+        return skills[22];
+    }
+
+    public int getBarShortenRoundStatus() {
+        return skills[23];
+    }
+
+    public int getBarShortRoundBonusStatus() {
+        return skills[24];
+    }
+
+    public int getStickyBarStatus() {
+        return skills[25];
+    }
+
+    public int getStickyBarTimeStatus() {
+        return skills[26];
     }
 }
