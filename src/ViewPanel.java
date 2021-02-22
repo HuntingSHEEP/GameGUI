@@ -44,7 +44,8 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
 
         g2d.setStroke(new BasicStroke(2.5f));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setPaint(new Color(0, 252, 214, 250));
+        //g2d.setPaint(new Color(58, 66, 65, 250));
+        g2d.setPaint(new Color(58, 66, 65, 250));
         g.drawLine(349, 283, 284, 249);
         g.drawLine(284,208,320,195);
         g.drawLine(253,208,216,182);
