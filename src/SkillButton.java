@@ -71,9 +71,6 @@ class SkillButton extends JButton {
         return skill;
     }
 
-    public void up(){
-
-    }
 
     public void equipStart() {
         selected = new ImageIcon("textures/start.png");
@@ -89,7 +86,7 @@ class SkillButton extends JButton {
 
     public void equipAddBall() {
         skill = 0;
-        children = new int[] {5, 6, 7};
+        children = new int[] {3,4,5};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -97,6 +94,8 @@ class SkillButton extends JButton {
     }
 
     public void equipIce() {
+        skill = 3;
+        children = new int[] {6};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -104,6 +103,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFire() {
+        skill = 5;
+        children = new int[] {7,8};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -148,6 +149,7 @@ class SkillButton extends JButton {
 
     public void equipBallSpeed() {
         skill = 1;
+        children = new int[] {10,12,13};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -155,6 +157,8 @@ class SkillButton extends JButton {
     }
 
     public void equipMagnetFloor() {
+        skill = 13;
+        children = new int[] {14};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -162,6 +166,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFloor() {
+        skill = 12;
+        children = new int[] {15,16};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -169,6 +175,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFlyToPoint() {
+        skill = 16;
+        children = new int[] {17};
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
@@ -176,6 +184,8 @@ class SkillButton extends JButton {
     }
 
     public void equipRadius() {
+        skill = 6;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -183,13 +193,17 @@ class SkillButton extends JButton {
     }
 
     public void equipX2() {
+        skill = 4;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
         setBounds(314, 156, 47, 47);
     }
 
-    public void equipForce() {
+    public void equipFireForce() {
+        skill = 7;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -197,6 +211,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFireTime() {
+        skill = 8;
+        children = new int[] {9};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -239,6 +255,8 @@ class SkillButton extends JButton {
     }
 
     public void equipBallSpeedBonus() {
+        skill = 11;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -246,6 +264,8 @@ class SkillButton extends JButton {
     }
 
     public void equipBallSpeedTime() {
+        skill = 10;
+        children = new int[] {11};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -253,6 +273,8 @@ class SkillButton extends JButton {
     }
 
     public void equipMagnetFloorTime() {
+        skill = 14;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -260,6 +282,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFloorTime() {
+        skill = 15;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -267,6 +291,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFreeze() {
+        skill = 17;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -274,6 +300,8 @@ class SkillButton extends JButton {
     }
 
     public void equipFlyThrough() {
+        skill = 9;
+        children = new int[] {};
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
@@ -289,7 +317,8 @@ class SkillButton extends JButton {
         }else if(status == 1){
             setEnabled(true);
         }else if(status == 2){
-            setEnabled(true);
+            setEnabled(false);
+            setDisabledIcon(hovered);
         }
     }
 
