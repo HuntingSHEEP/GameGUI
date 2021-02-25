@@ -97,8 +97,8 @@ class SkillButton extends JButton {
     public void equipAddBall() {
         skill = 0;
         children = new int[] {3,4,5};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(238, 187, 62, 84);
         setToolTipText("ADD BALL");
@@ -107,8 +107,8 @@ class SkillButton extends JButton {
     public void equipIce() {
         skill = 3;
         children = new int[] {6};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(170, 119, 62, 84);
         setToolTipText("Ice Ball");
@@ -117,8 +117,8 @@ class SkillButton extends JButton {
     public void equipFire() {
         skill = 5;
         children = new int[] {7,8};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(170, 255, 62, 84);
         setToolTipText("Fire Ball");
@@ -127,8 +127,8 @@ class SkillButton extends JButton {
     public void equipBarExtension() {
         skill = 2;
         children = new int[] {18,19};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(442, 192, 62, 84);
         setToolTipText("Bar Extension");
@@ -137,8 +137,8 @@ class SkillButton extends JButton {
     public void equipRoundExtension() {
         skill = 22;
         children = new int[] {20,23};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(555, 192, 62, 84);
         setToolTipText("Extend the round section");
@@ -147,8 +147,8 @@ class SkillButton extends JButton {
     public void equipSticky() {
         skill = 25;
         children = new int[] {26,23,20};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(661, 192, 62, 84);
         setToolTipText("Sticky Bar");
@@ -157,8 +157,8 @@ class SkillButton extends JButton {
     public void equipShortenBar() {
         skill = 20;
         children = new int[] {21,22,25,19};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(570, 62, 62, 84);
         setToolTipText("Shorten the bar");
@@ -167,8 +167,8 @@ class SkillButton extends JButton {
     public void equipShortenRound() {
         skill = 23;
         children = new int[] {22,25,24,18};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(570, 334, 62, 84);
         setToolTipText("Shorten the round section");
@@ -177,8 +177,8 @@ class SkillButton extends JButton {
     public void equipBallSpeed() {
         skill = 1;
         children = new int[] {10,12,13};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(334, 380, 62, 84);
         setToolTipText("Ball Speed");
@@ -187,8 +187,8 @@ class SkillButton extends JButton {
     public void equipMagnetFloor() {
         skill = 13;
         children = new int[] {14};
-        selected = new ImageIcon("textures/rab.png");
-        hovered = new ImageIcon("textures/rab2.png");
+        selected = new ImageIcon("textures/rab2.png");
+        hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
         setBounds(412, 418, 62, 84);
         setToolTipText("Magnet Floor");
@@ -374,7 +374,7 @@ class SkillButton extends JButton {
             setEnabled(true);
         }else if(status == 2){
             setEnabled(false);
-            setDisabledIcon(hovered);
+            setDisabledIcon(selected);
         }
     }
 
