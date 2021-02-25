@@ -8,13 +8,17 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
     private JScrollPane scrollPane;
     private Point mouseGrabPoint = null;
     private Point mouseTip = new Point(0,0);
+    private SkillLine[] sLine = new SkillLine[20];
+    private GameStatistics gs;
 
-    ViewPanel(){
+    ViewPanel(GameStatistics gs){
         super();
         setLayout(null);
         setPreferredSize(new Dimension(1000,1000));
         //setBorder(new MatteBorder(5, 5, 5, 5, Color.BLUE));
         setOpaque(false);
+
+        this.gs = gs;
 
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(this);
@@ -31,6 +35,28 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
 
         iconLabel.setBounds(0,0,700,700);
         iconLabel.setIcon(icon);
+        setupSkillLines(gs);
+    }
+
+    public void setupSkillLines(GameStatistics gs){
+        sLine[0] = new SkillLine(gs, new Point(349, 283), new Point(284, 249), -1, 0);
+        sLine[1] = new SkillLine(gs, new Point(284,208), new Point(320,195), 0, 4);
+        sLine[2] = new SkillLine(gs, new Point(253,208), new Point(216,182), 0, 3);
+        sLine[3] = new SkillLine(gs, new Point(185,140), new Point(150,124), 3, 6);
+        sLine[4] = new SkillLine(gs, new Point(254,249), new Point(216,277), 0, 5);
+        sLine[5] = new SkillLine(gs, new Point(186,277), new Point(164,260), 5, 7);
+        sLine[6] = new SkillLine(gs, new Point(185,317), new Point(165,334), 5, 8);
+        sLine[7] = new SkillLine(gs, new Point(132,334), new Point(93,317), 9, 8);
+        sLine[8] = new SkillLine(gs, new Point(368,317), new Point(365,383), -1, 1);
+        sLine[9] = new SkillLine(gs, new Point(380,400), new Point(410,372), 1, 10);
+        sLine[10] = new SkillLine(gs, new Point(450,365), new Point(484,380), 11, 10);
+        sLine[11] = new SkillLine(gs, new Point(350,442), new Point(299,440), 1, 12);
+        sLine[12] = new SkillLine(gs, new Point(269,481), new Point(243,497), 12, 15);
+        sLine[13] = new SkillLine(gs, new Point(301,480), new Point(350,522), 12, 16);
+        sLine[14] = new SkillLine(gs, new Point(349,563), new Point(321,579), 17, 16);
+        sLine[15] = new SkillLine(gs, new Point(381,441), new Point(428,440), 1, 13);
+        sLine[16] = new SkillLine(gs, new Point(459,480), new Point(481,496), 14, 13);
+
     }
 
     public JScrollPane getScrollPane(){
@@ -46,23 +72,31 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //g2d.setPaint(new Color(58, 66, 65, 250));
         g2d.setPaint(new Color(58, 66, 65, 250));
-        g.drawLine(349, 283, 284, 249);
-        g.drawLine(284,208,320,195);
-        g.drawLine(253,208,216,182);
-        g.drawLine(185,140,150,124);
-        g.drawLine(254,249,216,277);
-        g.drawLine(186,277,164,260);
-        g.drawLine(185,317,165,334);
-        g.drawLine(132,334,93,317);
-        g.drawLine(368,317,365,383);
-        g.drawLine(380,400,410,372);
-        g.drawLine(450,365,484,380);
-        g.drawLine(350,442,299,440);
-        g.drawLine(269,481,243,497);
-        g.drawLine(301,480,350,522);
-        g.drawLine(349,563,321,579);
-        g.drawLine(381,441,428,440);
-        g.drawLine(459,480,481,496);
+
+
+        for(int i=0; i<17; i++){
+            g2d.setPaint(sLine[i].getTexture());
+            g.drawLine(sLine[i].getA().x,sLine[i].getA().y, sLine[i].getB().x, sLine[i].getB().y);
+        }
+
+        g2d.setPaint(new Color(58, 66, 65, 250));
+
+        //g.drawLine(284,208,320,195);
+        //g.drawLine(253,208,216,182);
+        //g.drawLine(185,140,150,124);
+        //g.drawLine(254,249,216,277);
+        //g.drawLine(186,277,164,260);
+        //g.drawLine(185,317,165,334);
+        //g.drawLine(132,334,93,317);
+        //g.drawLine(368,317,365,383);
+        //g.drawLine(380,400,410,372);
+        //g.drawLine(450,365,484,380);
+        //g.drawLine(350,442,299,440);
+        //g.drawLine(269,481,243,497);
+        //g.drawLine(301,480,350,522);
+        //g.drawLine(349,563,321,579);
+        //g.drawLine(381,441,428,440);
+        //g.drawLine(459,480,481,496);
         g.drawLine(389,282,458,256);
         g.drawLine(489,256,518,277);
         g.drawLine(488,215,517,195);
@@ -92,7 +126,7 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e.getPoint());
+        //System.out.println(e.getPoint());
     }
 
     @Override
