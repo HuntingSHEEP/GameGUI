@@ -8,6 +8,7 @@ class SkillButton extends JButton {
     private ImageIcon selected = new ImageIcon("textures/start.png");
     private ImageIcon hovered = new ImageIcon("textures/start.png");
     private ImageIcon unselected = new ImageIcon("textures/start2.png");
+    private ImageIcon disabled = new ImageIcon("textures/start2.png");
 
     ViewPanel panel;
     private int skillStatus;
@@ -97,9 +98,10 @@ class SkillButton extends JButton {
     public void equipAddBall() {
         skill = 0;
         children = new int[] {3,4,5};
-        selected = new ImageIcon("textures/rab2.png");
-        hovered = new ImageIcon("textures/rab1.png");
-        unselected = new ImageIcon("textures/rab.png");
+        selected = new ImageIcon("textures/ballPlus2.png");
+        hovered = new ImageIcon("textures/ballPlus1.png");
+        unselected = new ImageIcon("textures/ballPlus01.png");
+        //disabled = new ImageIcon("textures/ballPlus0.png");
         setBounds(238, 187, 62, 84);
         setToolTipText("ADD BALL");
     }
@@ -107,9 +109,10 @@ class SkillButton extends JButton {
     public void equipIce() {
         skill = 3;
         children = new int[] {6};
-        selected = new ImageIcon("textures/rab2.png");
-        hovered = new ImageIcon("textures/rab1.png");
-        unselected = new ImageIcon("textures/rab.png");
+        selected = new ImageIcon("textures/iceBall2.png");
+        hovered = new ImageIcon("textures/iceBall1.png");
+        unselected = new ImageIcon("textures/iceBall01.png");
+        disabled = new ImageIcon("textures/iceBall0.png");
         setBounds(170, 119, 62, 84);
         setToolTipText("Ice Ball");
     }
@@ -120,6 +123,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(170, 255, 62, 84);
         setToolTipText("Fire Ball");
     }
@@ -130,6 +134,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(442, 192, 62, 84);
         setToolTipText("Bar Extension");
     }
@@ -140,6 +145,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(555, 192, 62, 84);
         setToolTipText("Extend the round section");
     }
@@ -150,6 +156,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(661, 192, 62, 84);
         setToolTipText("Sticky Bar");
     }
@@ -160,6 +167,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(570, 62, 62, 84);
         setToolTipText("Shorten the bar");
     }
@@ -170,6 +178,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(570, 334, 62, 84);
         setToolTipText("Shorten the round section");
     }
@@ -180,6 +189,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(334, 380, 62, 84);
         setToolTipText("Ball Speed");
     }
@@ -190,6 +200,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab2.png");
         hovered = new ImageIcon("textures/rab1.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(412, 418, 62, 84);
         setToolTipText("Magnet Floor");
     }
@@ -200,6 +211,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(253, 418, 62, 84);
         setToolTipText("Solid Floor");
     }
@@ -210,6 +222,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/rab.png");
         hovered = new ImageIcon("textures/rab2.png");
         unselected = new ImageIcon("textures/rab.png");
+        disabled = new ImageIcon("textures/rab.png");
         setBounds(334, 500, 62, 84);
         setToolTipText("Fly to point");
     }
@@ -220,6 +233,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(110, 86, 47, 47);
         setToolTipText("Ice Ball freeze radius");
     }
@@ -230,6 +244,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(314, 156, 47, 47);
         setToolTipText("Add two balls");
     }
@@ -240,6 +255,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(125, 221, 47, 47);
         setToolTipText("Fire Ball Force");
     }
@@ -250,6 +266,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(125, 327, 47, 47);
         setToolTipText("Fire Ball Time");
     }
@@ -260,6 +277,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(510, 156, 47, 47);
         setToolTipText("Increse the max bar size");
     }
@@ -270,6 +288,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(510, 270, 47, 47);
         setToolTipText("DX");
     }
@@ -280,6 +299,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(526, 25, 47, 47);
         setToolTipText("Bonus for the bar shortening");
     }
@@ -290,6 +310,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(722, 277, 47, 47);
         setToolTipText("Sticky bar time");
     }
@@ -300,6 +321,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(629, 419, 47, 47);
         setToolTipText("Bonus for the decreased round section");
     }
@@ -310,6 +332,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(480, 368, 47, 47);
         setToolTipText("Bonus for the ball speed");
     }
@@ -320,6 +343,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(405, 335, 47, 47);
         setToolTipText("Ball speed time");
     }
@@ -330,6 +354,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(473, 490, 47, 47);
         setToolTipText("Magnet floor time");
     }
@@ -340,6 +365,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(208, 494, 47, 47);
         setToolTipText("Floor time");
     }
@@ -350,6 +376,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(277, 561, 47, 47);
         setToolTipText("Freeze and fly to point");
     }
@@ -360,6 +387,7 @@ class SkillButton extends JButton {
         selected = new ImageIcon("textures/kolo.png");
         hovered = new ImageIcon("textures/kolo.png");
         unselected = new ImageIcon("textures/kolo2.png");
+        disabled = new ImageIcon("textures/kolo2.png");
         setBounds(53, 279, 47, 47);
         setToolTipText("Fly through the broken brick");
     }
@@ -369,7 +397,7 @@ class SkillButton extends JButton {
 
         if (status == 0){
             setEnabled(false);
-            //setDisabledIcon(selected);
+            setDisabledIcon(disabled);
         }else if(status == 1){
             setEnabled(true);
         }else if(status == 2){
