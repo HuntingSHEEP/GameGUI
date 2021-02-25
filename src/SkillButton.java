@@ -186,10 +186,10 @@ class SkillButton extends JButton {
     public void equipBallSpeed() {
         skill = 1;
         children = new int[] {10,12,13};
-        selected = new ImageIcon("textures/rab2.png");
-        hovered = new ImageIcon("textures/rab1.png");
-        unselected = new ImageIcon("textures/rab.png");
-        disabled = new ImageIcon("textures/rab.png");
+        selected = new ImageIcon("textures/ballSpeed2.png");
+        hovered = new ImageIcon("textures/ballSpeed1.png");
+        unselected = new ImageIcon("textures/ballSpeed01.png");
+        disabled = new ImageIcon("textures/ballSpeed0.png");
         setBounds(334, 380, 62, 84);
         setToolTipText("Ball Speed");
     }
