@@ -4,7 +4,7 @@ public class GameStatistics {
     private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
-    private int skillPoints = 10;
+    private int skillPoints = 30;
     /* IMPORTANT
     * 0 > indicates the skill is blocked and can't be purchased
     * 1 > indicates the skill is available to buy
@@ -24,9 +24,12 @@ public class GameStatistics {
                 ,0,0,0,0,0,0,0,0,0,0,0,0};
     }
 
+    public int getSkillStatus(int code){
+        return skills[code];
+    }
+
     public void unlockButtons(int[] list){
         for (int j : list) buttonUP(j, false);
-
     }
 
     public void buttonUP(int bNumber, boolean spendSP){
@@ -38,7 +41,6 @@ public class GameStatistics {
             if(skills[bNumber]==0)
                 skills[bNumber]++;
         }
-
     }
 
 
@@ -169,4 +171,6 @@ public class GameStatistics {
     public int getStickyBarTimeStatus() {
         return skills[26];
     }
+
+
 }

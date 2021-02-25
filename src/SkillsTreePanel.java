@@ -23,7 +23,7 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
         backgroundColor = new Color(0x222222);
         gs = mainFrame.getGameStatistics();
 
-        panel = new ViewPanel();
+        panel = new ViewPanel(gs);
         JPanel northPanel = new JPanel();
         JPanel westPanel = new JPanel();
         JPanel eastPanel = new JPanel();
@@ -240,6 +240,9 @@ public class SkillsTreePanel extends JPanel implements ActionListener {
                 setupButtons();
                 revalidate();
                 repaint();
+
+                panel.repaint();
+                panel.revalidate();
             }
         }
 
