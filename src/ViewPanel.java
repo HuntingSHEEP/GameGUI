@@ -8,7 +8,7 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
     private JScrollPane scrollPane;
     private Point mouseGrabPoint = null;
     private Point mouseTip = new Point(0,0);
-    private SkillLine[] sLine = new SkillLine[20];
+    private SkillLine[] sLine = new SkillLine[30];
     private GameStatistics gs;
 
     ViewPanel(GameStatistics gs){
@@ -56,6 +56,19 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
         sLine[14] = new SkillLine(gs, new Point(349,563), new Point(321,579), 17, 16);
         sLine[15] = new SkillLine(gs, new Point(381,441), new Point(428,440), 1, 13);
         sLine[16] = new SkillLine(gs, new Point(459,480), new Point(481,496), 14, 13);
+        sLine[17] = new SkillLine(gs, new Point(389,282), new Point(458,256), -1, 2);
+        sLine[18] = new SkillLine(gs, new Point(489,256), new Point(518,277), 2, 18);
+        sLine[19] = new SkillLine(gs, new Point(488,215), new Point(517,195), 2, 19);
+        sLine[20] = new SkillLine(gs, new Point(550,310), new Point(587,356), 18, 23);
+        sLine[21] = new SkillLine(gs, new Point(618,397), new Point(639,424), 24, 23);
+        sLine[22] = new SkillLine(gs, new Point(587,276), new Point(602,337), 22, 23);
+        sLine[23] = new SkillLine(gs, new Point(616,356), new Point(677,256), 25, 23);
+        sLine[24] = new SkillLine(gs, new Point(709,256), new Point(732,282), 25, 26);
+        sLine[25] = new SkillLine(gs, new Point(678,213), new Point(618,126), 25, 20);
+        sLine[26] = new SkillLine(gs, new Point(586,196), new Point(601,144), 22, 20);
+        sLine[27] = new SkillLine(gs, new Point(550,163), new Point(586,125), 19, 20);
+        sLine[28] = new SkillLine(gs, new Point(587,84), new Point(566,63), 21, 20);
+
 
     }
 
@@ -74,7 +87,7 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
         g2d.setPaint(new Color(58, 66, 65, 250));
 
 
-        for(int i=0; i<17; i++){
+        for(int i=0; i<29; i++){
             g2d.setPaint(sLine[i].getTexture());
             g.drawLine(sLine[i].getA().x,sLine[i].getA().y, sLine[i].getB().x, sLine[i].getB().y);
         }
@@ -97,18 +110,18 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
         //g.drawLine(349,563,321,579);
         //g.drawLine(381,441,428,440);
         //g.drawLine(459,480,481,496);
-        g.drawLine(389,282,458,256);
-        g.drawLine(489,256,518,277);
-        g.drawLine(488,215,517,195);
-        g.drawLine(550,310,587,356);
-        g.drawLine(618,397,639,424);
-        g.drawLine(587,276,602,337);
-        g.drawLine(616,356,677,256);
-        g.drawLine(709,256,732,282);
-        g.drawLine(678,213,618,126);
-        g.drawLine(586,196,601,144);
-        g.drawLine(550,163,586,125);
-        g.drawLine(587,84,566,63);
+        //g.drawLine(389,282,458,256);
+        //g.drawLine(489,256,518,277);
+        //g.drawLine(488,215,517,195);
+        //g.drawLine(550,310,587,356);
+        //g.drawLine(618,397,639,424);
+        //g.drawLine(587,276,602,337);
+        //g.drawLine(616,356,677,256);
+        //g.drawLine(709,256,732,282);
+        //g.drawLine(678,213,618,126);
+        //g.drawLine(586,196,601,144);
+        //g.drawLine(550,163,586,125);
+        //g.drawLine(587,84,566,63);
 
         int R = 900;
         int r = 2;
