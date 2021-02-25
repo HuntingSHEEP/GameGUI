@@ -68,8 +68,6 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
         sLine[26] = new SkillLine(gs, new Point(586,196), new Point(601,144), 22, 20);
         sLine[27] = new SkillLine(gs, new Point(550,163), new Point(586,125), 19, 20);
         sLine[28] = new SkillLine(gs, new Point(587,84), new Point(566,63), 21, 20);
-
-
     }
 
     public JScrollPane getScrollPane(){
@@ -83,9 +81,6 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
 
         g2d.setStroke(new BasicStroke(2.5f));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        //g2d.setPaint(new Color(58, 66, 65, 250));
-        g2d.setPaint(new Color(58, 66, 65, 250));
-
 
         for(int i=0; i<29; i++){
             g2d.setPaint(sLine[i].getTexture());
@@ -94,34 +89,6 @@ class ViewPanel extends JPanel implements MouseListener, MouseMotionListener, Ac
 
         g2d.setPaint(new Color(58, 66, 65, 250));
 
-        //g.drawLine(284,208,320,195);
-        //g.drawLine(253,208,216,182);
-        //g.drawLine(185,140,150,124);
-        //g.drawLine(254,249,216,277);
-        //g.drawLine(186,277,164,260);
-        //g.drawLine(185,317,165,334);
-        //g.drawLine(132,334,93,317);
-        //g.drawLine(368,317,365,383);
-        //g.drawLine(380,400,410,372);
-        //g.drawLine(450,365,484,380);
-        //g.drawLine(350,442,299,440);
-        //g.drawLine(269,481,243,497);
-        //g.drawLine(301,480,350,522);
-        //g.drawLine(349,563,321,579);
-        //g.drawLine(381,441,428,440);
-        //g.drawLine(459,480,481,496);
-        //g.drawLine(389,282,458,256);
-        //g.drawLine(489,256,518,277);
-        //g.drawLine(488,215,517,195);
-        //g.drawLine(550,310,587,356);
-        //g.drawLine(618,397,639,424);
-        //g.drawLine(587,276,602,337);
-        //g.drawLine(616,356,677,256);
-        //g.drawLine(709,256,732,282);
-        //g.drawLine(678,213,618,126);
-        //g.drawLine(586,196,601,144);
-        //g.drawLine(550,163,586,125);
-        //g.drawLine(587,84,566,63);
 
         int R = 900;
         int r = 2;

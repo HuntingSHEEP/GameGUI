@@ -4,7 +4,7 @@ public class GameStatistics {
     private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
-    private int skillPoints = 10;
+    private int skillPoints = 30;
     /* IMPORTANT
     * 0 > indicates the skill is blocked and can't be purchased
     * 1 > indicates the skill is available to buy
